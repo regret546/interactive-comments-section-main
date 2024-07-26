@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
 /*
 ! tailwindcss v3.4.6 | MIT License | https://tailwindcss.com
 */
@@ -446,7 +448,11 @@ video {
   display: none;
 }
 
-*, ::before, ::after {
+html {
+  font-family: "Rubik", sans-serif;
+}
+
+*, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -500,7 +506,7 @@ video {
   --tw-contain-style:  ;
 }
 
-::backdrop {
+::backdrop{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -554,16 +560,19 @@ video {
   --tw-contain-style:  ;
 }
 
-.bg-pink-500 {
+.bg-moderate-blue{
   --tw-bg-opacity: 1;
-  background-color: rgb(236 72 153 / var(--tw-bg-opacity));
+  background-color: hsl(238 40% 52% / var(--tw-bg-opacity));
 }
 
-.bg-green-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+.font-bold{
+  font-weight: 700;
 }
 
-.font-bold {
+.font-\[400\]{
+  font-weight: 400;
+}
+
+.font-\[700\]{
   font-weight: 700;
 }
