@@ -16,6 +16,11 @@ module.exports = {
         "light-gray": "hsl(223, 19%, 93%)",
         "very-light-gray": "hsl(228, 33%, 97%)",
       },
+      fontWeight: {
+        "fw--bold1": 400,
+        "fw--bold2": 500,
+        "fw--bold3": 700,
+      },
     },
   },
   plugins: [],
