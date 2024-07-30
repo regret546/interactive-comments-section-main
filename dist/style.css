@@ -560,6 +560,40 @@ html {
   --tw-contain-style:  ;
 }
 
+.container{
+  width: 100%;
+}
+
+@media (min-width: 640px){
+  .container{
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px){
+  .container{
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px){
+  .container{
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px){
+  .container{
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px){
+  .container{
+    max-width: 1536px;
+  }
+}
+
 .mx-4{
   margin-left: 1rem;
   margin-right: 1rem;
@@ -573,18 +607,6 @@ html {
 .my-10{
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-}
-
-.mt-auto{
-  margin-top: auto;
-}
-
-.mb-auto{
-  margin-bottom: auto;
-}
-
-.mt-2{
-  margin-top: 0.5rem;
 }
 
 .ml-auto{
@@ -612,6 +634,10 @@ html {
   height: 75%;
 }
 
+.min-h-\[100vh\]{
+  min-height: 100vh;
+}
+
 .max-w-\[500px\]{
   max-width: 500px;
 }
@@ -632,6 +658,10 @@ html {
   justify-items: center;
 }
 
+.gap-10{
+  gap: 2.5rem;
+}
+
 .gap-2{
   gap: 0.5rem;
 }
@@ -642,19 +672,6 @@ html {
 
 .gap-4{
   gap: 1rem;
-}
-
-.bg-pink-600{
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 39 119 / var(--tw-bg-opacity));
-}
-
-.fill-pink-600{
-  fill: #db2777;
-}
-
-.fill-grayish-blue{
-  fill: hsl(211, 10%, 45%);
 }
 
 .fill-light-grayish-blue{
@@ -697,16 +714,6 @@ html {
   color: hsl(238 40% 52% / var(--tw-text-opacity));
 }
 
-.text-black{
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-.text-pink-600{
-  --tw-text-opacity: 1;
-  color: rgb(219 39 119 / var(--tw-text-opacity));
-}
-
 .hover\:fill-current:hover{
   fill: currentColor;
 }
@@ -714,11 +721,6 @@ html {
 .hover\:text-moderate-blue:hover{
   --tw-text-opacity: 1;
   color: hsl(238 40% 52% / var(--tw-text-opacity));
-}
-
-.hover\:text-light-grayish-blue:hover{
-  --tw-text-opacity: 1;
-  color: hsl(239 57% 85% / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:fill-light-grayish-blue{
@@ -733,10 +735,6 @@ html {
 @media (min-width: 768px){
   .md\:mb-3{
     margin-bottom: 0.75rem;
-  }
-
-  .md\:block{
-    display: block;
   }
 
   .md\:flex{
