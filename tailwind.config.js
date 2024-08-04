@@ -21,6 +21,9 @@ module.exports = {
         "fw--bold2": 500,
         "fw--bold3": 700,
       },
+      gridTemplateColumns: {
+        custom: "50px 500px 50px",
+      },
     },
   },
   variants: {
