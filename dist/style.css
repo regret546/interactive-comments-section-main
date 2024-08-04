@@ -621,6 +621,10 @@ html {
   margin-bottom: 0.75rem;
 }
 
+.mb-6{
+  margin-bottom: 1.5rem;
+}
+
 .ml-10{
   margin-left: 2.5rem;
 }
@@ -631,14 +635,6 @@ html {
 
 .mr-1{
   margin-right: 0.25rem;
-}
-
-.mb-2{
-  margin-bottom: 0.5rem;
-}
-
-.mb-6{
-  margin-bottom: 1.5rem;
 }
 
 .block{
@@ -657,43 +653,13 @@ html {
   display: none;
 }
 
-.size-\[50px\]{
-  width: 50px;
-  height: 50px;
-}
-
-.size-4{
-  width: 1rem;
-  height: 1rem;
-}
-
 .size-\[35px\]{
   width: 35px;
   height: 35px;
 }
 
-.size-\[20px\]{
-  width: 20px;
-  height: 20px;
-}
-
-.h-full{
-  height: 100%;
-}
-
-.h-\[500px\]{
-  height: 500px;
-}
-
-.h-\[250px\]{
-  height: 250px;
-}
-
-.h-\[150px\]{
-  height: 150px;
-}
-
-.h-\[50px\]{
+.size-\[50px\]{
+  width: 50px;
   height: 50px;
 }
 
@@ -701,8 +667,8 @@ html {
   height: 120px;
 }
 
-.max-h-\[250px\]{
-  max-height: 250px;
+.h-full{
+  height: 100%;
 }
 
 .w-\[2px\]{
@@ -713,8 +679,48 @@ html {
   width: 100%;
 }
 
+.w-\[100\%\]{
+  width: 100%;
+}
+
+.w-\[80\%\]{
+  width: 80%;
+}
+
+.w-\[70\%\]{
+  width: 70%;
+}
+
+.w-\[90\%\]{
+  width: 90%;
+}
+
 .max-w-\[500px\]{
   max-width: 500px;
+}
+
+.max-w-full{
+  max-width: 100%;
+}
+
+.max-w-\[600px\]{
+  max-width: 600px;
+}
+
+.max-w-\[50px\]{
+  max-width: 50px;
+}
+
+.max-w-\[100px\]{
+  max-width: 100px;
+}
+
+.max-w-\[75px\]{
+  max-width: 75px;
+}
+
+.max-w-\[70px\]{
+  max-width: 70px;
 }
 
 .flex-1{
@@ -765,10 +771,6 @@ html {
   gap: 1rem;
 }
 
-.rounded-lg{
-  border-radius: 0.5rem;
-}
-
 .rounded-md{
   border-radius: 0.375rem;
 }
@@ -777,17 +779,29 @@ html {
   border-radius: 0.125rem;
 }
 
-.border{
-  border-width: 1px;
+.rounded-lg{
+  border-radius: 0.5rem;
+}
+
+.rounded-\[2px\]{
+  border-radius: 2px;
+}
+
+.rounded-s-md{
+  border-start-start-radius: 0.375rem;
+  border-end-start-radius: 0.375rem;
 }
 
 .border-2{
   border-width: 2px;
 }
 
-.border-gray-300{
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+.border{
+  border-width: 1px;
+}
+
+.border-\[1px\]{
+  border-width: 1px;
 }
 
 .border-moderate-blue{
@@ -795,19 +809,29 @@ html {
   border-color: hsl(238 40% 52% / var(--tw-border-opacity));
 }
 
+.border-gray-300{
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.border-grayish-blue{
+  --tw-border-opacity: 1;
+  border-color: hsl(211 10% 45% / var(--tw-border-opacity));
+}
+
 .bg-light-grayish-blue{
   --tw-bg-opacity: 1;
   background-color: hsl(239 57% 85% / var(--tw-bg-opacity));
 }
 
-.bg-gray-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
 .bg-moderate-blue{
   --tw-bg-opacity: 1;
   background-color: hsl(238 40% 52% / var(--tw-bg-opacity));
+}
+
+.bg-gray-50{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
 .fill-light-grayish-blue{
@@ -822,12 +846,12 @@ html {
   fill: hsl(358, 79%, 66%);
 }
 
-.p-4{
-  padding: 1rem;
-}
-
 .p-2{
   padding: 0.5rem;
+}
+
+.p-2\.5{
+  padding: 0.625rem;
 }
 
 .text-left{
@@ -837,11 +861,6 @@ html {
 .text-lg{
   font-size: 1.125rem;
   line-height: 1.75rem;
-}
-
-.text-base{
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .text-sm{
@@ -855,10 +874,6 @@ html {
 
 .font-fw--bold3{
   font-weight: 700;
-}
-
-.font-medium{
-  font-weight: 500;
 }
 
 .text-dark-blue{
@@ -886,8 +901,24 @@ html {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.outline-moderate-blue{
-  outline-color: hsl(238, 40%, 52%);
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.outline-none{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.hover\:bg-grayish-blue:hover{
+  --tw-bg-opacity: 1;
+  background-color: hsl(211 10% 45% / var(--tw-bg-opacity));
+}
+
+.hover\:bg-light-grayish-blue:hover{
+  --tw-bg-opacity: 1;
+  background-color: hsl(239 57% 85% / var(--tw-bg-opacity));
 }
 
 .hover\:fill-current:hover{
@@ -947,6 +978,10 @@ html {
 
   .md\:max-w-\[750px\]{
     max-width: 750px;
+  }
+
+  .md\:max-w-\[100px\]{
+    max-width: 100px;
   }
 
   .md\:items-center{
