@@ -24,10 +24,21 @@ module.exports = {
       gridTemplateColumns: {
         custom: "50px 500px 50px",
       },
+      display: {
+        "hidden-content": "none",
+      },
     },
   },
   variants: {
     fill: ["hover", "focus"],
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".hidden-content": {
+          display: "none",
+        },
+      });
+    },
+  ],
 };
