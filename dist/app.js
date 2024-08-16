@@ -1,7 +1,14 @@
-const replyCardTemplate = document.querySelector("[date-user-reply-template]");
+const getData = async function () {
+  const res = await axios.get("/data.json");
+  console.log(res.data.comments);
+};
+
+getData();
+
+/* const replyCardTemplate = document.querySelector("[date-user-reply-template]"); */
 
 /* for upvote */
-const incrementBtn = document.querySelectorAll("#increment");
+/* const incrementBtn = document.querySelectorAll("#increment");
 incrementBtn.forEach((button) => {
   const parentContainer = button.parentElement;
   button.addEventListener("click", function () {
@@ -9,10 +16,10 @@ incrementBtn.forEach((button) => {
     const currentVote = parseInt(voteText.textContent);
     voteText.innerText = currentVote + 1;
   });
-});
+}); */
 
 /* for downvote */
-const decrementBtn = document.querySelectorAll("#decrement");
+/* const decrementBtn = document.querySelectorAll("#decrement");
 decrementBtn.forEach((button) => {
   const parentContainer = button.parentElement;
   button.addEventListener("click", function () {
@@ -25,3 +32,4 @@ decrementBtn.forEach((button) => {
     }
   });
 });
+ */
