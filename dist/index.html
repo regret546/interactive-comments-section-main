@@ -214,7 +214,9 @@
                 <span
                   class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
                   >@maxblagun</span
-                >Though it seems the drag deature could be improved. But overall
+                >
+                <span></span>
+                Though it seems the drag deature could be improved. But overall
                 it looks incredible. You've nailed the design and the
                 responsiveness at various breakpoints works really well.
               </p>
@@ -397,16 +399,21 @@
           <div class="col-span-full md:col-start-2 md:col-end-3">
             <div class="profile-section flex gap-3 items-center mb-3">
               <img
-                data-user-profile-picture
+                comment-data-user-profile-picture
                 class="size-[50px] md:size-[35px]"
                 src=""
                 alt=""
               />
-              <h2 class="text-dark-blue font-fw--bold2" data-username></h2>
-              <p class="text-grayish-blue" user-post-date>1 month ago</p>
+              <h2
+                class="text-dark-blue font-fw--bold2"
+                comment-data-username
+              ></h2>
+              <p class="text-grayish-blue" comment-user-post-date>
+                1 month ago
+              </p>
               <!--  reply container for desktop view -->
             </div>
-            <p class="text-grayish-blue text-left" data-user-reply>
+            <p class="text-grayish-blue text-left" comment-data-user-comment>
               Impressive! Though it seems the drag deature could be improved.
               But overall it looks incredible. You've nailed the design and the
               responsiveness at various breakpoints works really well.
@@ -429,7 +436,7 @@
             </svg>
             <p
               class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-start"
-              data-use-score
+              comment-data-user-score
             >
               12
             </p>
@@ -465,7 +472,7 @@
       </section>
     </template>
     <template data-reply-container-template>
-      <article class="relative grid gap-10">
+      <article class="relative grid gap-10" id="reply-section">
         <div
           class="divider ml-5 w-[2px] h-full absolute bg-light-grayish-blue"
         ></div>
@@ -480,25 +487,33 @@
         <div class="col-span-full md:col-start-2 md:col-end-3">
           <div class="profile-section flex gap-3 items-center mb-3">
             <img
+              reply-data-user-profile-picture
               class="size-[50px] md:size-[35px]"
               src="/images/avatars/image-ramsesmiron.png"
               alt="ramsesmiron"
             />
-            <h2 class="text-dark-blue font-fw--bold2">ramsesmiron</h2>
+            <h2 class="text-dark-blue font-fw--bold2" reply-data-username>
+              ramsesmiron
+            </h2>
             <p
               class="bg-moderate-blue text-xs font-fw--bold2 px-2 rounded-sm text-white hidden-content"
             >
               you
             </p>
-            <p class="text-grayish-blue">1 weeks ago</p>
+            <p class="text-grayish-blue" reply-user-post-date>1 weeks ago</p>
             <!--  reply container for desktop view -->
           </div>
           <p class="text-grayish-blue text-left">
-            <span class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
+            <span
+              class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
+              reply-data-user-replyingto
               >@maxblagun</span
-            >Though it seems the drag deature could be improved. But overall it
-            looks incredible. You've nailed the design and the responsiveness at
-            various breakpoints works really well.
+            >
+            <span reply-data-user-reply
+              >Though it seems the drag deature could be improved. But overall
+              it looks incredible. You've nailed the design and the
+              responsiveness at various breakpoints works really well.</span
+            >
           </p>
         </div>
 
@@ -518,6 +533,7 @@
           </svg>
           <p
             class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-start"
+            reply-data-user-score
           >
             4
           </p>

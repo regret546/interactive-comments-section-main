@@ -2,6 +2,7 @@ const commentsContainer = document.querySelector("[data-main]");
 
 /* Get data from data.json */
 const getData = async function () {
+  commentsContainer.innerHTML = "";
   const res = await axios.get("/data.json");
   const commentsData = res.data.comments;
   commentsData.forEach((comment) => {
@@ -19,13 +20,15 @@ const commentSection = function (data) {
   const commentCardTemplate = document.querySelector(
     "[data-user-comment-template]"
   );
+  const commentCard = commentCardTemplate.content.cloneNode(true);
 
-  const card = commentCardTemplate.content.cloneNode(true);
-  const userName = card.querySelector("[data-username]");
-  const userPostDate = card.querySelector("[user-post-date]");
-  const userComment = card.querySelector("[data-user-reply]");
-  const userScore = card.querySelector("[data-use-score]");
-  const userPicture = card.querySelector("[data-user-profile-picture]");
+  const userName = commentCard.querySelector("[comment-data-username]");
+  const userPostDate = commentCard.querySelector("[comment-user-post-date]");
+  const userComment = commentCard.querySelector("[comment-data-user-comment]");
+  const userScore = commentCard.querySelector("[comment-data-user-score]");
+  const userPicture = commentCard.querySelector(
+    "[comment-data-user-profile-picture]"
+  );
 
   userName.innerText = data.user.username;
   userPostDate.innerText = data.createdAt;
@@ -34,23 +37,50 @@ const commentSection = function (data) {
   userPicture.src = `/images/avatars/image-${data.user.username}.png`;
   userScore.innerText = data.score;
 
-  const toAppendReplyContainer = card.querySelector("#comment-section");
+  /*  if theres a reply it will throw to replySection function */
+
   if (userReplyData.length !== 0) {
-    replySection(userReplyData, toAppendReplyContainer);
+    const commentSectionContainer =
+      commentCard.querySelector("#comment-section");
+    const replyContainer = document.querySelector(
+      "[data-reply-container-template]"
+    );
+    const userReplyTemplateContainer = replyContainer.content.cloneNode(true);
+    commentSectionContainer.append(userReplyTemplateContainer);
+    userReplyData.forEach((reply) => {
+      replySection(reply, userReplyTemplateContainer);
+    });
   } else {
     console.log("no reply");
   }
-  commentsContainer.append(card);
+
+  commentsContainer.append(commentCard);
 };
 
 /* For reply section */
-const replyContainer = document.querySelector(
-  "[data-reply-container-template]"
-);
-const replySection = function (data, card) {
+
+const replySection = function (data, commentSectiontoAppend) {
   const replyCardTemplate = document.querySelector("[data-reply-template]");
-  const userReplyTemplateContainer = replyContainer.content.cloneNode(true);
-  card.append(userReplyTemplateContainer);
+  const replyCard = replyCardTemplate.content.cloneNode(true);
+
+  const userPicture = replyCard.querySelector(
+    "[reply-data-user-profile-picture]"
+  );
+  const userName = replyCard.querySelector("[reply-data-username]");
+  const userPostDate = replyCard.querySelector("[reply-user-post-date]");
+  const userReplyingTo = replyCard.querySelector(
+    "[reply-data-user-replyingto]"
+  );
+  const userReply = replyCard.querySelector("[reply-data-user-reply]");
+  const userScore = replyCard.querySelector("[reply-data-user-score]");
+
+  userPicture.src = `/images/avatars/image-${data.user.username}.png`;
+  userName.innerText = data.user.username;
+  userPostDate.innerText = data.createdAt;
+  userReplyingTo.innerText = `@${data.replyingTo}`;
+  userReply.innerText = data.content;
+  userScore.innerText = data.score;
+  commentSectiontoAppend.append(replyCard);
 };
 
 /* For upvote and downvote */
