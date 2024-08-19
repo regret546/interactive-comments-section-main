@@ -48,7 +48,7 @@ const commentSection = function (data) {
     const userReplyTemplateContainer = replyContainer.content.cloneNode(true);
     commentSectionContainer.append(userReplyTemplateContainer);
     userReplyData.forEach((reply) => {
-      replySection(reply, userReplyTemplateContainer);
+      replySection(reply, commentSectionContainer);
     });
   } else {
     console.log("no reply");
@@ -60,6 +60,8 @@ const commentSection = function (data) {
 /* For reply section */
 
 const replySection = function (data, commentSectiontoAppend) {
+  const replyArticleContainer =
+    commentSectiontoAppend.querySelector("#reply-section");
   const replyCardTemplate = document.querySelector("[data-reply-template]");
   const replyCard = replyCardTemplate.content.cloneNode(true);
 
@@ -80,7 +82,7 @@ const replySection = function (data, commentSectiontoAppend) {
   userReplyingTo.innerText = `@${data.replyingTo}`;
   userReply.innerText = data.content;
   userScore.innerText = data.score;
-  commentSectiontoAppend.append(replyCard);
+  replyArticleContainer.append(replyCard);
 };
 
 /* For upvote and downvote */
