@@ -2,7 +2,7 @@ const commentsContainer = document.querySelector("[data-main]");
 
 /* Get data from data.json */
 const getData = async function () {
-  commentsContainer.innerHTML = "";
+  /*   commentsContainer.innerHTML = ""; */
   const res = await axios.get("/data.json");
   const commentsData = res.data.comments;
   commentsData.forEach((comment) => {
