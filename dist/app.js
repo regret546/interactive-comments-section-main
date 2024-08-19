@@ -1,9 +1,10 @@
 const commentsContainer = document.querySelector("[data-main]");
-
+let currentUser;
 /* Get data from data.json */
 const getData = async function () {
-  /*   commentsContainer.innerHTML = ""; */
+  commentsContainer.innerHTML = "";
   const res = await axios.get("/data.json");
+  currentUser = res.data.currentUser.username;
   const commentsData = res.data.comments;
   commentsData.forEach((comment) => {
     commentSection(comment);
@@ -48,7 +49,12 @@ const commentSection = function (data) {
     const userReplyTemplateContainer = replyContainer.content.cloneNode(true);
     commentSectionContainer.append(userReplyTemplateContainer);
     userReplyData.forEach((reply) => {
-      replySection(reply, commentSectionContainer);
+      if (reply.user.username === currentUser) {
+        currentReplySection(reply, commentSectionContainer);
+      } else {
+        replySection(reply, commentSectionContainer);
+      }
+      console.log(reply.user.username);
     });
   } else {
     console.log("no reply");
@@ -85,12 +91,43 @@ const replySection = function (data, commentSectiontoAppend) {
   replyArticleContainer.append(replyCard);
 };
 
+/* For reply section of currentUser*/
+
+const currentReplySection = function (data, commentSectiontoAppend) {
+  const replyArticleContainer =
+    commentSectiontoAppend.querySelector("#reply-section");
+  const replyCardTemplate = document.querySelector(
+    "[data-currentuser-reply-template]"
+  );
+  const replyCard = replyCardTemplate.content.cloneNode(true);
+
+  const userPicture = replyCard.querySelector(
+    "[reply-data-user-profile-picture]"
+  );
+  const userName = replyCard.querySelector("[reply-data-username]");
+  const userPostDate = replyCard.querySelector("[reply-user-post-date]");
+  const userReplyingTo = replyCard.querySelector(
+    "[reply-data-user-replyingto]"
+  );
+  const userReply = replyCard.querySelector("[reply-data-user-reply]");
+  const userScore = replyCard.querySelector("[reply-data-user-score]");
+
+  userPicture.src = `/images/avatars/image-${data.user.username}.png`;
+  userName.innerText = data.user.username;
+  userPostDate.innerText = data.createdAt;
+  userReplyingTo.innerText = `@${data.replyingTo}`;
+  userReply.innerText = data.content;
+  userScore.innerText = data.score;
+  replyArticleContainer.append(replyCard);
+};
+
 /* For upvote and downvote */
 const userScoreCounter = function () {
   const incrementBtn = document.querySelectorAll("#increment");
   incrementBtn.forEach((button) => {
     const parentContainer = button.parentElement;
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
       const voteText = parentContainer.querySelector("p");
       const currentVote = parseInt(voteText.textContent);
       voteText.innerText = currentVote + 1;
@@ -100,7 +137,8 @@ const userScoreCounter = function () {
   const decrementBtn = document.querySelectorAll("#decrement");
   decrementBtn.forEach((button) => {
     const parentContainer = button.parentElement;
-    button.addEventListener("click", function () {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
       const voteText = parentContainer.querySelector("p");
       const currentVote = parseInt(voteText.textContent);
       if (currentVote === 0) {

@@ -27,6 +27,9 @@ module.exports = {
       display: {
         "hidden-content": "none",
       },
+      screens: {
+        "max-xm": { max: "350px" }, // Custom extra small breakpoint
+      },
     },
   },
   variants: {

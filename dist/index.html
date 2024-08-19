@@ -57,7 +57,7 @@
           </div>
 
           <div
-            class="md:row-span-full h-[75%] mt-2 flex items-center gap-4 font-fw--bold3 md:grid md:col-start-1"
+            class="md:row-span-full h-[75%] mt-2 flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
           >
             <svg
               id="increment"
@@ -137,7 +137,7 @@
           </div>
 
           <div
-            class="md:row-span-full mt-2 h-[75%] flex items-center gap-4 font-fw--bold3 md:grid md:col-start-1"
+            class="md:row-span-full mt-2 h-[75%] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
           >
             <svg
               id="increment"
@@ -223,7 +223,7 @@
             </div>
 
             <div
-              class="md:row-span-full mt-2 h-[75%] flex items-center gap-4 font-fw--bold3 md:grid md:col-start-1"
+              class="md:row-span-full mt-2 h-[75%] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
             >
               <svg
                 id="increment"
@@ -303,7 +303,7 @@
             </div>
 
             <div
-              class="md:row-span-full mt-2 h-[75%] flex items-center gap-4 font-fw--bold3 md:grid md:col-start-1"
+              class="md:row-span-full mt-2 h-[75%] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
             >
               <svg
                 id="increment"
@@ -421,7 +421,7 @@
           </div>
 
           <div
-            class="md:row-span-full h-[75%] mt-2 flex items-center gap-4 font-fw--bold3 md:grid md:col-start-1"
+            class="md:row-span-full h-[75%] mt-2 flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
           >
             <svg
               id="increment"
@@ -518,7 +518,7 @@
         </div>
 
         <div
-          class="md:row-span-full mt-2 h-[75%] flex items-center gap-4 font-fw--bold3 md:grid md:col-start-1"
+          class="md:row-span-full mt-2 h-[75%] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
         >
           <svg
             id="increment"
@@ -549,7 +549,7 @@
             />
           </svg>
         </div>
-
+        <!--   for change -->
         <div
           class="md:row-span-full group ml-auto md:mb-auto md:-ml-20 reply-button md:col-start-3 md:col-end-4 flex items-center gap-2 font-fw--bold2 text-lg cursor-pointer"
         >
@@ -576,31 +576,38 @@
         <div class="col-span-full md:col-start-2 md:col-end-3">
           <div class="profile-section flex gap-3 items-center mb-3">
             <img
+              reply-data-user-profile-picture
               class="size-[50px] md:size-[35px]"
-              src="/images/avatars/image-juliusomo.png"
-              alt="a"
+              src="/images/avatars/image-ramsesmiron.png"
+              alt="ramsesmiron"
             />
-            <h2 class="text-dark-blue font-fw--bold2">juliusomo</h2>
+            <h2 class="text-dark-blue font-fw--bold2" reply-data-username>
+              ramsesmiron
+            </h2>
             <p
-              class="bg-moderate-blue text-xs font-fw--bold2 px-3 py-[2px] rounded-sm text-white"
+              class="bg-moderate-blue text-xs font-fw--bold2 px-2 rounded-sm text-white hidden-content"
             >
               you
             </p>
-            <p class="text-grayish-blue">2 days ago</p>
+            <p class="text-grayish-blue" reply-user-post-date>1 weeks ago</p>
             <!--  reply container for desktop view -->
           </div>
           <p class="text-grayish-blue text-left">
-            <span class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
-              >@ramsesmiron
-            </span>
-            I couldn't agree more with this. Everything moves so fast and it
-            always seems like everyone knows the newest library/framework. But
-            the fundamentals are what stay constant.
+            <span
+              class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
+              reply-data-user-replyingto
+              >@maxblagun</span
+            >
+            <span reply-data-user-reply
+              >Though it seems the drag deature could be improved. But overall
+              it looks incredible. You've nailed the design and the
+              responsiveness at various breakpoints works really well.</span
+            >
           </p>
         </div>
 
         <div
-          class="md:row-span-full mt-2 h-[75%] flex items-center gap-4 font-fw--bold3 md:grid md:col-start-1"
+          class="md:row-span-full mt-2 h-[75%] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
         >
           <svg
             id="increment"
@@ -614,9 +621,10 @@
             />
           </svg>
           <p
-            class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-start"
+            class="text-moderate-blue select-none hover: font-fw--bold2 flex justify-center w-10 md:justify-start"
+            reply-data-user-score
           >
-            2
+            4
           </p>
           <svg
             id="decrement"
@@ -632,9 +640,11 @@
         </div>
 
         <div
-          class="md:row-span-full ml-auto md:mb-auto md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center gap-2 font-fw--bold2 text-lg cursor-pointer"
+          class="md:row-span-full ml-auto md:mb-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center gap-1 font-fw--bold2 text-lg"
         >
-          <div class="flex items-center gap-2 group text-soft-red">
+          <div
+            class="flex items-center cursor-pointer gap-2 group text-soft-red"
+          >
             <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="fill-soft-red font-fw--bold2 group-hover:fill-pale-red"
@@ -644,7 +654,9 @@
             <p class="font-fw--bold2 group-hover:text-pale-red">Delete</p>
           </div>
 
-          <div class="flex items-center gap-2 group ml-4">
+          <div
+            class="flex cursor-pointer items-center gap-2 group ml-4 max-xm:ml-0"
+          >
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
               <path
                 class="fill-moderate-blue group-hover:fill-light-grayish-blue"
