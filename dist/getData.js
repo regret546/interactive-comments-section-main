@@ -54,10 +54,7 @@ const commentSection = function (data) {
       } else {
         replySection(reply, commentSectionContainer);
       }
-      console.log(reply.user.username);
     });
-  } else {
-    console.log("no reply");
   }
 
   commentsContainer.append(commentCard);
