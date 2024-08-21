@@ -11,6 +11,7 @@ const getData = async function () {
   });
 
   userScoreCounter();
+  document.dispatchEvent(new Event("dataLoaded"));
 };
 
 getData();
