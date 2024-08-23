@@ -450,6 +450,7 @@ video {
 
 html {
   font-family: "Rubik", sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 *, ::before, ::after{
@@ -816,16 +817,6 @@ html {
   padding-right: 0.5rem;
 }
 
-.px-3{
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
-
-.py-\[2px\]{
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
 .text-left{
   text-align: left;
 }
@@ -994,10 +985,6 @@ html {
 }
 
 @media (max-width: 350px){
-  .max-xm\:float-start{
-    float: inline-start;
-  }
-
   .max-xm\:ml-0{
     margin-left: 0px;
   }
