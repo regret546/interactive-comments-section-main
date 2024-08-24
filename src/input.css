@@ -9,3 +9,15 @@
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+/* @layer components {
+  .updateborder {
+    border-style: none;
+    outline: none;
+    text-decoration: none;
+    background-clip: content-box;
+    border: 2px solid hsl(238, 40%, 52%);
+    border-radius: 10px;
+  }
+}
+ */

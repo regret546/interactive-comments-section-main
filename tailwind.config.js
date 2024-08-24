@@ -43,5 +43,7 @@ module.exports = {
         },
       });
     },
+
+    require("./plugins/openVariant"),
   ],
 };

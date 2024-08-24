@@ -164,5 +164,6 @@ document.addEventListener("dataLoaded", function () {
   };
   const allComment = document.querySelectorAll("#comment-section");
   const lastComment = allComment[allComment.length - 1];
+  console.log(allComment.length);
   userCommentField(lastComment, currentUser);
 });

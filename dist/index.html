@@ -66,7 +66,7 @@
           </div>
 
           <div
-            class="md:row-span-full h-[75%] mt-2 flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
+            class="md:row-span-full h-[70px] mt-2 flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
           >
             <svg
               id="increment"
@@ -163,7 +163,7 @@
         </div>
 
         <div
-          class="md:row-span-full mt-2 h-[75%] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
+          class="md:row-span-full mt-2 h-[80px] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
         >
           <svg
             id="increment"
@@ -219,41 +219,57 @@
         class="post-section-1 h-full p-4 grid-cols-2 ml-10 md:ml-[3.5rem] md:grid-rows-1 md:grid-cols-custom grid"
       >
         <!-- profile section both for mobile and desktop view -->
-        <div class="col-span-full md:col-start-2 md:col-end-3">
-          <div class="profile-section flex gap-3 items-center mb-3">
-            <img
-              reply-data-user-profile-picture
-              class="size-[50px] md:size-[35px]"
-              src="/images/avatars/image-ramsesmiron.png"
-              alt="ramsesmiron"
-            />
-            <h2 class="text-dark-blue font-fw--bold2" reply-data-username>
-              ramsesmiron
-            </h2>
-            <p
-              class="bg-moderate-blue text-xs font-fw--bold2 px-2 rounded-sm text-white hidden-content"
-            >
-              you
+        <div
+          id="forEdit"
+          class="col-span-full md:col-start-2 md:col-end-3 w-full grid group"
+        >
+          <div
+            class="group-open:border-[1px] group-open:border-moderate-blue group-open:rounded-md p-2"
+          >
+            <div class="profile-section flex gap-3 mb-3">
+              <img
+                reply-data-user-profile-picture
+                class="size-[50px] md:size-[35px]"
+                src="/images/avatars/image-ramsesmiron.png"
+                alt="ramsesmiron"
+              />
+              <h2 class="text-dark-blue font-fw--bold2" reply-data-username>
+                ramsesmiron
+              </h2>
+              <p
+                class="bg-moderate-blue text-xs font-fw--bold2 px-2 rounded-sm text-white hidden-content"
+              >
+                you
+              </p>
+              <p class="text-grayish-blue" reply-user-post-date>1 weeks ago</p>
+              <!--  reply container for desktop view -->
+            </div>
+            <p class="text-grayish-blue text-left">
+              <span
+                class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
+                reply-data-user-replyingto
+                >@maxblagun</span
+              >
+              <span
+                class="outline-none group-open:cursor-text"
+                reply-data-user-reply
+                contenteditable=""
+                >Though it seems the drag deature could be improved. But overall
+                it looks incredible. You've nailed the design and the
+                responsiveness at various breakpoints works really well.</span
+              >
             </p>
-            <p class="text-grayish-blue" reply-user-post-date>1 weeks ago</p>
-            <!--  reply container for desktop view -->
           </div>
-          <p class="text-grayish-blue text-left">
-            <span
-              class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
-              reply-data-user-replyingto
-              >@maxblagun</span
-            >
-            <span reply-data-user-reply
-              >Though it seems the drag deature could be improved. But overall
-              it looks incredible. You've nailed the design and the
-              responsiveness at various breakpoints works really well.</span
-            >
-          </p>
+          <button
+            id="updateBtn"
+            class="hidden group-open:block hover:bg-light-grayish-blue mt-2 place-self-end text-white bg-moderate-blue rounded-md p-2 md:max-w-[100px] max-w-[70px] w-full"
+          >
+            Update
+          </button>
         </div>
 
         <div
-          class="md:row-span-full mt-2 h-[75%] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
+          class="md:row-span-full mt-2 h-[80px] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
         >
           <svg
             id="increment"
@@ -286,7 +302,7 @@
         </div>
 
         <div
-          class="md:row-span-full ml-auto md:mb-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center gap-1 font-fw--bold2 text-lg"
+          class="md:row-span-full md:pt-2 ml-auto md:mb-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center gap-1 font-fw--bold2 text-lg"
         >
           <div
             class="flex items-center select-none cursor-pointer gap-2 group text-soft-red"
@@ -302,16 +318,17 @@
           </div>
 
           <div
-            class="flex cursor-pointer items-center gap-2 select-none group ml-4 max-xm:ml-0"
+            id="editBtn"
+            class="flex cursor-pointer items-center gap-2 select-none ml-4 max-xm:ml-0 group text-light-grayish-blue"
           >
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
               <path
-                class="fill-moderate-blue group-hover:fill-light-grayish-blue"
+                class="fill-moderate-blue group-open:fill-light-grayish-blue group-hover:fill-light-grayish-blue"
                 d="M13.479 2.872 11.08.474a1.75 1.75 0 0 0-2.327-.06L.879 8.287a1.75 1.75 0 0 0-.5 1.06l-.375 3.648a.875.875 0 0 0 .875.954h.078l3.65-.333c.399-.04.773-.216 1.058-.499l7.875-7.875a1.68 1.68 0 0 0-.061-2.371Zm-2.975 2.923L8.159 3.449 9.865 1.7l2.389 2.39-1.75 1.706Z"
               />
             </svg>
             <p
-              class="text-moderate-blue font-fw--bold2 group-hover:text-light-grayish-blue"
+              class="text-moderate-blue font-fw--bold2 group-hover:text-light-grayish-blue group-open:text-light-grayish-blue"
             >
               Edit
             </p>
