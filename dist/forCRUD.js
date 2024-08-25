@@ -9,7 +9,6 @@ document.addEventListener("dataLoaded", function () {
 
     /* for updating reply of current-user */
     const editButtons = document.querySelectorAll("#editBtn");
-
     editButtons.forEach((editBtn) => {
       editBtn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -29,15 +28,31 @@ document.addEventListener("dataLoaded", function () {
           editBtn.classList.add("pointer-events-none");
           editBtn.classList.add("open");
           currentUserReplyText.setAttribute("contenteditable", "true");
+          currentUserReplyText.id = "editable-content";
         }
 
-        const updateButton = document.querySelector("#updateBtn");
+        // automatically place the cursor at the end of the content once //
+        document.getElementById("editable-content").addEventListener(
+          "click",
+          function (event) {
+            const selection = window.getSelection();
+            const range = document.createRange();
+            range.selectNodeContents(this);
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+          },
+          { once: true }
+        );
 
+        // for update button //
+        const updateButton = document.querySelector("#updateBtn");
         updateButton.addEventListener("click", function () {
           editBtn.classList.remove("pointer-events-none");
           editBtn.classList.remove("open");
           editReplyContainer.classList.remove("open");
           currentUserReplyText.setAttribute("contenteditable", "false");
+          currentUserReplyText.id = "";
           currentUserReplyText.innerText = currentUserReplyText.textContent;
         });
       });

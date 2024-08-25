@@ -223,9 +223,7 @@
           id="forEdit"
           class="col-span-full md:col-start-2 md:col-end-3 w-full grid group"
         >
-          <div
-            class="group-open:border-[1px] group-open:border-moderate-blue group-open:rounded-md p-2"
-          >
+          <div class="">
             <div class="profile-section flex gap-3 mb-3">
               <img
                 reply-data-user-profile-picture
@@ -244,16 +242,20 @@
               <p class="text-grayish-blue" reply-user-post-date>1 weeks ago</p>
               <!--  reply container for desktop view -->
             </div>
-            <p class="text-grayish-blue text-left">
+            <p
+              id="editText"
+              class="text-grayish-blue text-left group-open: group-open:border-[1px] group-open:border-moderate-blue group-open:rounded-md p-2 group-open:cursor-text"
+            >
               <span
-                class="font-fw--bold2 mr-1 text-moderate-blue cursor-pointer"
+                class="font-fw--bold2 mr-1 group-open:text-grayish-blue text-moderate-blue cursor-pointer"
                 reply-data-user-replyingto
                 >@maxblagun</span
               >
               <span
-                class="outline-none group-open:cursor-text"
+                id="editable-content"
+                class="outline-none group-open:cursor-text caret-moderate-blue"
                 reply-data-user-reply
-                contenteditable=""
+                contenteditable="false"
                 >Though it seems the drag deature could be improved. But overall
                 it looks incredible. You've nailed the design and the
                 responsiveness at various breakpoints works really well.</span
