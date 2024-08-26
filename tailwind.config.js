@@ -28,7 +28,7 @@ module.exports = {
         "hidden-content": "none",
       },
       screens: {
-        "max-xm": { max: "350px" }, // Custom extra small breakpoint
+        "max-xm": { max: "370px" }, // Custom extra small breakpoint
       },
     },
   },
@@ -44,6 +44,7 @@ module.exports = {
       });
     },
 
-    require("./plugins/openVariant"),
+    require("./plugins/updateVariant"),
+    require("./plugins/deleteVariant"),
   ],
 };

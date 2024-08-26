@@ -19,14 +19,14 @@ document.addEventListener("dataLoaded", function () {
           "[reply-data-user-reply]"
         );
 
-        if (editReplyContainer.classList.contains("open")) {
+        if (editReplyContainer.classList.contains("update")) {
           editBtn.classList.remove("pointer-events-none");
-          editReplyContainer.classList.remove("open");
+          editReplyContainer.classList.remove("update");
           currentUserReplyText.setAttribute("contenteditable", "false");
         } else {
-          editReplyContainer.classList.add("open");
+          editReplyContainer.classList.add("update");
           editBtn.classList.add("pointer-events-none");
-          editBtn.classList.add("open");
+          editBtn.classList.add("update");
           currentUserReplyText.setAttribute("contenteditable", "true");
           currentUserReplyText.id = "editable-content";
         }
@@ -49,8 +49,8 @@ document.addEventListener("dataLoaded", function () {
         const updateButton = document.querySelector("#updateBtn");
         updateButton.addEventListener("click", function () {
           editBtn.classList.remove("pointer-events-none");
-          editBtn.classList.remove("open");
-          editReplyContainer.classList.remove("open");
+          editBtn.classList.remove("update");
+          editReplyContainer.classList.remove("update");
           currentUserReplyText.setAttribute("contenteditable", "false");
           currentUserReplyText.id = "";
           currentUserReplyText.innerText = currentUserReplyText.textContent;

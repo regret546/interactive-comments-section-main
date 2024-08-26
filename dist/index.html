@@ -26,19 +26,23 @@
       }
     </style>
   </head>
-  <body class="grid place-items-center">
+  <body class="grid place-items-center relative crud delete">
     <main
-      data-main
-      class="grid gap-8 md:gap10 mx-6 my-10 max-w-[500px] md:max-w-[750px]"
+      class="main min-h-full w-full grid place-items-center crud-delete:bg-light-gray"
     >
-      <!--  general post container -->
+      <div
+        data-main
+        class="grid gap-8 md:gap10 mx-6 my-10 max-w-[500px] md:max-w-[750px]"
+      >
+        <!--  general post container -->
+      </div>
     </main>
 
     <!--   Template -->
     <template data-user-comment-template>
       <section class="grid gap-12 md:gap-6" id="comment-section">
         <div
-          class="post-section-1 h-full p-4 grid-cols-2 md:grid-rows-1 md:grid-cols-custom grid"
+          class="post-section-1 h-full crud-delete:bg-white crud-delete:rounded-lg p-4 grid-cols-2 md:grid-rows-1 md:grid-cols-custom grid"
         >
           <!-- profile section both for mobile and desktop view -->
           <div class="col-span-full md:col-start-2 md:col-end-3">
@@ -66,7 +70,7 @@
           </div>
 
           <div
-            class="md:row-span-full h-[70px] mt-2 flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
+            class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
           >
             <svg
               id="increment"
@@ -80,7 +84,7 @@
               />
             </svg>
             <p
-              class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-start"
+              class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-center"
               comment-data-user-score
             >
               12
@@ -126,7 +130,7 @@
 
     <template data-reply-template>
       <div
-        class="post-section-1 h-full p-4 grid-cols-2 ml-10 md:ml-[3.5rem] md:grid-rows-1 md:grid-cols-custom grid"
+        class="post-section-1 crud-delete:bg-white crud-delete:rounded-lg h-full p-4 grid-cols-2 ml-10 md:ml-[3.5rem] md:grid-rows-1 md:grid-cols-custom grid"
       >
         <!-- profile section both for mobile and desktop view -->
         <div class="col-span-full md:col-start-2 md:col-end-3">
@@ -163,7 +167,7 @@
         </div>
 
         <div
-          class="md:row-span-full mt-2 h-[80px] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
+          class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
         >
           <svg
             id="increment"
@@ -177,10 +181,10 @@
             />
           </svg>
           <p
-            class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-start"
+            class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-center"
             reply-data-user-score
           >
-            4
+            12
           </p>
           <svg
             id="decrement"
@@ -194,6 +198,7 @@
             />
           </svg>
         </div>
+
         <!--   for change -->
         <div
           class="md:row-span-full group ml-auto md:mb-auto md:-ml-20 reply-button md:col-start-3 md:col-end-4 flex items-center gap-2 font-fw--bold2 text-lg cursor-pointer"
@@ -216,7 +221,7 @@
     <template data-currentuser-reply-template>
       <div
         id="current-user-post"
-        class="post-section-1 h-full p-4 grid-cols-2 ml-10 md:ml-[3.5rem] md:grid-rows-1 md:grid-cols-custom grid"
+        class="post-section-1 h-full crud-delete:bg-white crud-delete:rounded-lg p-4 grid-cols-2 ml-10 md:ml-[3.5rem] md:grid-rows-1 md:grid-cols-custom grid"
       >
         <!-- profile section both for mobile and desktop view -->
         <div
@@ -244,16 +249,15 @@
             </div>
             <p
               id="editText"
-              class="text-grayish-blue text-left group-open: group-open:border-[1px] group-open:border-moderate-blue group-open:rounded-md p-2 group-open:cursor-text"
+              class="text-grayish-blue text-left group-update: group-update:border-[1px] group-update:border-moderate-blue group-update:rounded-md p-2 group-update:cursor-text"
             >
               <span
-                class="font-fw--bold2 mr-1 group-open:text-grayish-blue text-moderate-blue cursor-pointer"
+                class="font-fw--bold2 mr-1 group-update:text-grayish-blue text-moderate-blue cursor-pointer"
                 reply-data-user-replyingto
                 >@maxblagun</span
               >
               <span
-                id="editable-content"
-                class="outline-none group-open:cursor-text caret-moderate-blue"
+                class="outline-none group-update:cursor-text caret-moderate-blue"
                 reply-data-user-reply
                 contenteditable="false"
                 >Though it seems the drag deature could be improved. But overall
@@ -264,14 +268,14 @@
           </div>
           <button
             id="updateBtn"
-            class="hidden group-open:block hover:bg-light-grayish-blue mt-2 place-self-end text-white bg-moderate-blue rounded-md p-2 md:max-w-[100px] max-w-[70px] w-full"
+            class="hidden group-update:block hover:bg-light-grayish-blue mt-2 place-self-end text-white bg-moderate-blue rounded-md p-2 md:max-w-[100px] max-w-[70px] w-full"
           >
             Update
           </button>
         </div>
 
         <div
-          class="md:row-span-full mt-2 h-[80px] flex items-center gap-2 font-fw--bold3 md:grid md:col-start-1"
+          class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
         >
           <svg
             id="increment"
@@ -285,10 +289,10 @@
             />
           </svg>
           <p
-            class="text-moderate-blue select-none hover: font-fw--bold2 flex justify-center w-10 md:justify-start"
+            class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-center"
             reply-data-user-score
           >
-            4
+            12
           </p>
           <svg
             id="decrement"
@@ -304,10 +308,10 @@
         </div>
 
         <div
-          class="md:row-span-full md:pt-2 ml-auto md:mb-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center gap-1 font-fw--bold2 text-lg"
+          class="md:row-span-full md:pt-2 md:mb-auto -ml-5 max-xm:ml-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center font-fw--bold2 text-lg"
         >
           <div
-            class="flex items-center select-none cursor-pointer gap-2 group text-soft-red"
+            class="flex items-center select-none gap-2 cursor-pointer group text-soft-red"
             id="delete-post"
           >
             <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
@@ -321,16 +325,16 @@
 
           <div
             id="editBtn"
-            class="flex cursor-pointer items-center gap-2 select-none ml-4 max-xm:ml-0 group text-light-grayish-blue"
+            class="flex cursor-pointer items-center gap-2 select-none ml-4 pr-4 max-xm:ml-0 group text-light-grayish-blue"
           >
             <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
               <path
-                class="fill-moderate-blue group-open:fill-light-grayish-blue group-hover:fill-light-grayish-blue"
+                class="fill-moderate-blue group-update:fill-light-grayish-blue group-hover:fill-light-grayish-blue"
                 d="M13.479 2.872 11.08.474a1.75 1.75 0 0 0-2.327-.06L.879 8.287a1.75 1.75 0 0 0-.5 1.06l-.375 3.648a.875.875 0 0 0 .875.954h.078l3.65-.333c.399-.04.773-.216 1.058-.499l7.875-7.875a1.68 1.68 0 0 0-.061-2.371Zm-2.975 2.923L8.159 3.449 9.865 1.7l2.389 2.39-1.75 1.706Z"
               />
             </svg>
             <p
-              class="text-moderate-blue font-fw--bold2 group-hover:text-light-grayish-blue group-open:text-light-grayish-blue"
+              class="text-moderate-blue font-fw--bold2 group-hover:text-light-grayish-blue group-update:text-light-grayish-blue"
             >
               Edit
             </p>
@@ -340,8 +344,10 @@
     </template>
 
     <template data-user-comment-field>
-      <article>
-        <div class="flex justify-between w-full items-start gap-2">
+      <article class="p-6 crud-delete:bg-white rounded-lg">
+        <div
+          class="flex justify-between w-full items-start gap-2 max-h-[130px]"
+        >
           <img
             data-currentuser
             src="/images/avatars/image-juliusomo.png"
@@ -364,12 +370,12 @@
         </div>
       </article>
     </template>
-    <div class="attribution">
+    <!--  <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
       >. Coded by <a href="#">Regret546</a>.
-    </div>
+    </div> -->
     <script src="/node_modules/axios/dist/axios.min.js"></script>
     <script src="/dist/getData.js" defer></script>
     <script src="/dist/forCRUD.js" defer></script>
