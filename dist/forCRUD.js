@@ -1,10 +1,35 @@
 document.addEventListener("dataLoaded", function () {
   /* for deleting reply of current-user */
+  const bodyElement = document.querySelector("body");
   const deleteButtons = document.querySelectorAll("#delete-post");
+
+  // Outer Delete Button //
   deleteButtons.forEach((deleteBtn) => {
     deleteBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      this.closest("#current-user-post").remove();
+      bodyElement.classList.add("delete");
+      // For Inner Delete Button //
+      const modal = document.querySelector("#deleteModal");
+      const yesDeleteBtn = modal.querySelector("#deleteYes");
+      const noDeleteBtn = modal.querySelector("#deleteNo");
+
+      //Option to proceed to delete or no//
+      yesDeleteBtn.addEventListener("click", handleDelete);
+      noDeleteBtn.addEventListener("click", handleDelete);
+      const currentUserPostToDelete = this.closest("#current-user-post");
+
+      function handleDelete(event) {
+        if (event.target === yesDeleteBtn) {
+          // If the 'Yes' button is clicked
+          currentUserPostToDelete.remove();
+          console.log("Post deleted.");
+        } else if (event.target === noDeleteBtn) {
+          // If the 'No' button is clicked
+          console.log("Delete canceled.");
+        }
+
+        bodyElement.classList.remove("delete");
+      }
     });
 
     /* for updating reply of current-user */
