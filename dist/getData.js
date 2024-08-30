@@ -1,5 +1,13 @@
 const commentsContainer = document.querySelector("[data-main]");
 let currentUser;
+
+const createReplySection = function (container) {
+  const replyContainer = document.querySelector(
+    "[data-reply-container-template]"
+  );
+  const userReplyTemplateContainer = replyContainer.content.cloneNode(true);
+  container.append(userReplyTemplateContainer);
+};
 /* Get data from data.json */
 const getData = async function () {
   commentsContainer.innerHTML = "";
@@ -44,11 +52,7 @@ const commentSection = function (data) {
   if (userReplyData.length !== 0) {
     const commentSectionContainer =
       commentCard.querySelector("#comment-section");
-    const replyContainer = document.querySelector(
-      "[data-reply-container-template]"
-    );
-    const userReplyTemplateContainer = replyContainer.content.cloneNode(true);
-    commentSectionContainer.append(userReplyTemplateContainer);
+    createReplySection(commentSectionContainer);
     userReplyData.forEach((reply) => {
       if (reply.user.username === currentUser) {
         currentReplySection(reply, commentSectionContainer);
@@ -90,7 +94,6 @@ const replySection = function (data, commentSectiontoAppend) {
 };
 
 /* For reply section of currentUser*/
-
 const currentReplySection = function (data, commentSectiontoAppend) {
   const replyArticleContainer =
     commentSectiontoAppend.querySelector("#reply-section");
@@ -148,20 +151,19 @@ const userScoreCounter = function () {
   });
 };
 
+/* for comment fileld */
+const userCommentField = function (comment, user) {
+  const commentFieldCardTemplate = document.querySelector(
+    "[data-user-comment-field]"
+  );
+
+  const commentField = commentFieldCardTemplate.content.cloneNode(true);
+  const userProfile = commentField.querySelector("[data-currentuser]");
+  userProfile.src = `/images/avatars/image-${currentUser}.png`;
+  comment.append(commentField);
+};
+
 document.addEventListener("dataLoaded", function () {
-  /* for comment fileld */
-  const userCommentField = function (lastComment, user) {
-    const commentFieldCardTemplate = document.querySelector(
-      "[data-user-comment-field]"
-    );
-
-    const commentField = commentFieldCardTemplate.content.cloneNode(true);
-    const userProfile = commentField.querySelector("[data-currentuser]");
-
-    userProfile.src = `/images/avatars/image-${currentUser}.png`;
-
-    lastComment.append(commentField);
-  };
   const allComment = document.querySelectorAll("#comment-section");
   const lastComment = allComment[allComment.length - 1];
   userCommentField(lastComment, currentUser);

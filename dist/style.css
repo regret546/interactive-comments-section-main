@@ -1116,10 +1116,6 @@ html {
     grid-row: 1 / -1;
   }
 
-  .md\:-ml-20{
-    margin-left: -5rem;
-  }
-
   .md\:-ml-8{
     margin-left: -2rem;
   }
@@ -1128,32 +1124,16 @@ html {
     margin-left: -10rem;
   }
 
+  .md\:-ml-\[5\.5rem\]{
+    margin-left: -5.5rem;
+  }
+
   .md\:mb-auto{
     margin-bottom: auto;
   }
 
   .md\:ml-\[3\.5rem\]{
     margin-left: 3.5rem;
-  }
-
-  .md\:-ml-11{
-    margin-left: -2.75rem;
-  }
-
-  .md\:-ml-\[4rem\]{
-    margin-left: -4rem;
-  }
-
-  .md\:-ml-\[5rem\]{
-    margin-left: -5rem;
-  }
-
-  .md\:-ml-\[5\.2rem\]{
-    margin-left: -5.2rem;
-  }
-
-  .md\:-ml-\[5\.5rem\]{
-    margin-left: -5.5rem;
   }
 
   .md\:grid{

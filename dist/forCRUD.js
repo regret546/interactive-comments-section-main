@@ -87,6 +87,41 @@ document.addEventListener("dataLoaded", function () {
   /* for creating reply of current-user */
 
   //For Comment Reply //
+  const currentUserComment = function (
+    replyingTo,
+    comment,
+    commentSectiontoAppend
+  ) {
+    if (!commentSectiontoAppend.querySelector("#reply-section")) {
+      createReplySection(commentSectiontoAppend);
+    }
+    const replyArticleContainer =
+      commentSectiontoAppend.querySelector("#reply-section");
+    const replyCardTemplate = document.querySelector(
+      "[data-currentuser-reply-template]"
+    );
+    const replyCard = replyCardTemplate.content.cloneNode(true);
+
+    const userPicture = replyCard.querySelector(
+      "[reply-data-user-profile-picture]"
+    );
+    const userName = replyCard.querySelector("[reply-data-username]");
+    const userPostDate = replyCard.querySelector("[reply-user-post-date]");
+    const userReplyingTo = replyCard.querySelector(
+      "[reply-data-user-replyingto]"
+    );
+    const userReply = replyCard.querySelector("[reply-data-user-reply]");
+    const userScore = replyCard.querySelector("[reply-data-user-score]");
+
+    userPicture.src = `/images/avatars/image-${currentUser}.png`;
+    userName.innerText = currentUser;
+    userPostDate.innerText = "1 min ago";
+    userReplyingTo.innerText = replyingTo;
+    userReply.innerText = comment;
+    userScore.innerText = 0;
+    replyArticleContainer.append(replyCard);
+  };
+
   const commentReply = document.querySelectorAll("#comment-reply");
   commentReply.forEach((reply) => {
     reply.addEventListener("click", function () {
@@ -95,7 +130,23 @@ document.addEventListener("dataLoaded", function () {
       if (commentField) {
         console.log('The element "comment-field" exists.');
       } else {
-        console.log('The element "comment-field" does not exist.');
+        userCommentField(commentSection, currentUser);
+      }
+    });
+  });
+
+  const allCommentsContainer = document.querySelectorAll("#comment-section");
+  allCommentsContainer.forEach((commentsContainer) => {
+    commentsContainer.addEventListener("click", function (event) {
+      if (event.target.id === "sendBtn") {
+        const commentResponse =
+          commentsContainer.querySelector("#message").value;
+        const replyTo = commentsContainer.querySelector(
+          "[comment-data-username]"
+        ).innerText;
+        console.log(commentsContainer);
+
+        currentUserComment(replyTo, commentResponse, commentsContainer);
       }
     });
   });
