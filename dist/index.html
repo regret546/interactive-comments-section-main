@@ -97,7 +97,7 @@
             class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
           >
             <svg
-              id="increment"
+              onclick="upVote(this)"
               width="11"
               height="11"
               xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@
               12
             </p>
             <svg
-              id="decrement"
+              onclick="downVote(this)"
               width="11"
               height="3"
               xmlns="http://www.w3.org/2000/svg"
@@ -127,6 +127,7 @@
           </div>
 
           <div
+            onclick="commentReply(this)"
             id="comment-reply"
             class="md:row-span-full ml-auto md:mb-auto md:-ml-8 group reply-button md:col-start-3 md:col-end-4 flex items-center gap-2 font-fw--bold2 text-lg cursor-pointer"
           >
@@ -143,6 +144,11 @@
             </p>
           </div>
         </div>
+        <article class="relative grid gap-10" id="reply-section">
+          <div
+            class="divider ml-[2rem] w-[2px] h-full absolute bg-light-grayish-blue"
+          ></div>
+        </article>
       </section>
     </template>
     <template data-reply-container-template>
@@ -195,7 +201,7 @@
           class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
         >
           <svg
-            id="increment"
+            onclick="upVote(this)"
             width="11"
             height="11"
             xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +218,7 @@
             12
           </p>
           <svg
-            id="decrement"
+            onclick="downVote(this)"
             width="11"
             height="3"
             xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +260,7 @@
           class="col-span-full md:col-start-2 md:col-end-3 w-full grid group"
         >
           <div class="">
-            <div class="profile-section flex gap-3 mb-3">
+            <div class="profile-section flex items-center gap-3 mb-3">
               <img
                 reply-data-user-profile-picture
                 class="size-[50px] md:size-[35px]"
@@ -303,7 +309,7 @@
           class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
         >
           <svg
-            id="increment"
+            onclick="upVote(this)"
             width="11"
             height="11"
             xmlns="http://www.w3.org/2000/svg"
@@ -320,7 +326,7 @@
             12
           </p>
           <svg
-            id="decrement"
+            onclick="downVote(this)"
             width="11"
             height="3"
             xmlns="http://www.w3.org/2000/svg"
@@ -333,9 +339,10 @@
         </div>
 
         <div
-          class="md:row-span-full md:pt-2 md:mb-auto -ml-5 max-xm:ml-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center font-fw--bold2 text-lg"
+          class="md:row-span-full md:mb-auto -ml-5 max-xm:ml-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center font-fw--bold2 text-lg"
         >
           <div
+            onclick="deleteReply(this)"
             class="flex items-center select-none gap-2 cursor-pointer group text-soft-red"
             id="delete-post"
           >
@@ -349,6 +356,7 @@
           </div>
 
           <div
+            onclick="editReply(this)"
             id="editBtn"
             class="flex cursor-pointer items-center gap-2 select-none ml-4 pr-4 max-xm:ml-0 group text-light-grayish-blue"
           >

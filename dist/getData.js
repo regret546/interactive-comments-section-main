@@ -1,13 +1,7 @@
 const commentsContainer = document.querySelector("[data-main]");
+const allCommentsContainer = document.querySelectorAll("#comment-section");
 let currentUser;
 
-const createReplySection = function (container) {
-  const replyContainer = document.querySelector(
-    "[data-reply-container-template]"
-  );
-  const userReplyTemplateContainer = replyContainer.content.cloneNode(true);
-  container.append(userReplyTemplateContainer);
-};
 /* Get data from data.json */
 const getData = async function () {
   commentsContainer.innerHTML = "";
@@ -18,7 +12,7 @@ const getData = async function () {
     commentSection(comment);
   });
 
-  userScoreCounter();
+  /*   userScoreCounter(); */
   document.dispatchEvent(new Event("dataLoaded"));
 };
 
@@ -48,11 +42,10 @@ const commentSection = function (data) {
   userScore.innerText = data.score;
 
   /*  if theres a reply it will throw to replySection function */
-
   if (userReplyData.length !== 0) {
     const commentSectionContainer =
       commentCard.querySelector("#comment-section");
-    createReplySection(commentSectionContainer);
+
     userReplyData.forEach((reply) => {
       if (reply.user.username === currentUser) {
         currentReplySection(reply, commentSectionContainer);
@@ -123,33 +116,23 @@ const currentReplySection = function (data, commentSectiontoAppend) {
 };
 
 /* For upvote and downvote */
-const userScoreCounter = function () {
-  const incrementBtn = document.querySelectorAll("#increment");
-  incrementBtn.forEach((button) => {
-    const parentContainer = button.parentElement;
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-      const voteText = parentContainer.querySelector("p");
-      const currentVote = parseInt(voteText.textContent);
-      voteText.innerText = currentVote + 1;
-    });
-  });
+function upVote(element) {
+  const parentContainer = element.parentElement;
+  const voteText = parentContainer.querySelector("p");
+  const currentVote = parseInt(voteText.textContent);
+  voteText.innerText = currentVote + 1;
+}
 
-  const decrementBtn = document.querySelectorAll("#decrement");
-  decrementBtn.forEach((button) => {
-    const parentContainer = button.parentElement;
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-      const voteText = parentContainer.querySelector("p");
-      const currentVote = parseInt(voteText.textContent);
-      if (currentVote === 0) {
-        return;
-      } else {
-        voteText.innerText = currentVote - 1;
-      }
-    });
-  });
-};
+function downVote(element) {
+  const parentContainer = element.parentElement;
+  const voteText = parentContainer.querySelector("p");
+  const currentVote = parseInt(voteText.textContent);
+  if (currentVote === 0) {
+    return;
+  } else {
+    voteText.innerText = currentVote - 1;
+  }
+}
 
 /* for comment fileld */
 const userCommentField = function (comment, user) {
