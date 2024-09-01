@@ -134,7 +134,7 @@ function downVote(element) {
   }
 }
 
-/* for comment fileld */
+/* for comment field */
 const userCommentField = function (comment, user) {
   const commentFieldCardTemplate = document.querySelector(
     "[data-user-comment-field]"
@@ -151,3 +151,15 @@ document.addEventListener("dataLoaded", function () {
   const lastComment = allComment[allComment.length - 1];
   userCommentField(lastComment, currentUser);
 });
+
+/* for reply field */
+const userReplyField = function (comment, user) {
+  const replyFieldCardTemplate = document.querySelector(
+    "[data-user-reply-field]"
+  );
+
+  const commentField = replyFieldCardTemplate.content.cloneNode(true);
+  const userProfile = commentField.querySelector("[data-currentuser]");
+  userProfile.src = `/images/avatars/image-${currentUser}.png`;
+  comment.append(commentField);
+};

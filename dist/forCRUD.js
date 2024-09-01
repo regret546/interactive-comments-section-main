@@ -1,6 +1,4 @@
 /* for editing current user reply */
-const editButtons = document.querySelectorAll("#editBtn");
-
 function editReply(element) {
   const currentUserReplyContainer = element.closest("#current-user-post");
   const editReplyContainer =
@@ -8,6 +6,7 @@ function editReply(element) {
   const currentUserReplyText = editReplyContainer.querySelector(
     "[reply-data-user-reply]"
   );
+  const editBtn = document.querySelector("#editBtn");
 
   if (editReplyContainer.classList.contains("update")) {
     editBtn.classList.remove("pointer-events-none");
@@ -110,7 +109,7 @@ const currentUserComment = function (
   replyArticleContainer.append(replyCard);
 };
 
-function commentReply(element) {
+function postReply(element) {
   const commentSection = element.closest("#comment-section");
   const commentField = commentSection.querySelector("#comment-field");
   if (commentField) {
@@ -120,7 +119,18 @@ function commentReply(element) {
   }
 }
 
+function commentReply(element) {
+  const commentParentPost = element.closest("#replyContainer");
+  const commentField = commentParentPost.querySelector("#comment-field");
+  if (commentField) {
+    console.log('The element "comment-field" exists.');
+  } else {
+    userReplyField(commentParentPost, currentUser);
+  }
+}
+
 document.addEventListener("dataLoaded", function () {
+  /*  for comment field */
   const allCommentsContainer = document.querySelectorAll("#comment-section");
   allCommentsContainer.forEach((commentsContainer) => {
     commentsContainer.addEventListener("click", function (event) {
@@ -132,6 +142,29 @@ document.addEventListener("dataLoaded", function () {
 
         if (commentResponse.value.trim() !== "") {
           currentUserComment(replyTo, commentResponse.value, commentsContainer);
+          commentsContainer.querySelector("#message").value = "";
+          commentsContainer.querySelector("#comment-field").remove();
+        }
+      }
+    });
+  });
+
+  /* for reply field  */
+  const allReplyContainer = document.querySelectorAll("#replyContainer");
+  allReplyContainer.forEach((replyContainer) => {
+    replyContainer.addEventListener("click", function (event) {
+      if (event.target.id === "replyBtn") {
+        const replyResponse = replyContainer.querySelector("#message");
+        const replyTo = replyContainer.querySelector(
+          "[reply-data-username]"
+        ).innerText;
+
+        if (replyResponse.value.trim() !== "") {
+          currentUserComment(
+            replyTo,
+            replyResponse.value,
+            replyContainer.closest("#comment-section")
+          );
           commentsContainer.querySelector("#message").value = "";
           commentsContainer.querySelector("#comment-field").remove();
         }
