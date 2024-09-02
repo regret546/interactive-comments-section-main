@@ -603,6 +603,10 @@ html {
   visibility: collapse;
 }
 
+.fixed{
+  position: fixed;
+}
+
 .absolute{
   position: absolute;
 }
@@ -1132,40 +1136,12 @@ html {
     margin-bottom: auto;
   }
 
+  .md\:ml-4{
+    margin-left: 1rem;
+  }
+
   .md\:ml-\[3\.5rem\]{
     margin-left: 3.5rem;
-  }
-
-  .md\:-ml-\[6rem\]{
-    margin-left: -6rem;
-  }
-
-  .md\:-ml-\[4rem\]{
-    margin-left: -4rem;
-  }
-
-  .md\:-ml-\[3\.8rem\]{
-    margin-left: -3.8rem;
-  }
-
-  .md\:-ml-\[3rem\]{
-    margin-left: -3rem;
-  }
-
-  .md\:-ml-\[4\.2rem\]{
-    margin-left: -4.2rem;
-  }
-
-  .md\:-ml-\[4\.3rem\]{
-    margin-left: -4.3rem;
-  }
-
-  .md\:-ml-\[4\.4rem\]{
-    margin-left: -4.4rem;
-  }
-
-  .md\:-ml-\[4\.5rem\]{
-    margin-left: -4.5rem;
   }
 
   .md\:grid{

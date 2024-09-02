@@ -29,7 +29,7 @@
   <body class="grid place-items-center crud">
     <div
       id="deleteModal"
-      class="hidden absolute z-10 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg max-w-[300px] p-6 crud-delete:grid gap-4"
+      class="hidden fixed z-10 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg max-w-[300px] p-6 crud-delete:grid gap-4"
     >
       <h2 class="font-fw--bold2 text-xl text-grayish-blue">Delete Comment</h2>
       <p class="text-[0.9rem] text-grayish-blue">
@@ -162,7 +162,7 @@
     <template data-reply-template>
       <div class="grid ml-10" id="replyContainer">
         <div
-          class="post-section-1 crud-delete:bg-white crud-delete:rounded-lg h-full p-4 grid-cols-2 md:grid-rows-1 md:grid-cols-custom grid"
+          class="post-section-1 crud-delete:bg-white crud-delete:rounded-lg md:ml-4 h-full p-4 grid-cols-2 md:grid-rows-1 md:grid-cols-custom grid"
         >
           <!-- profile section both for mobile and desktop view -->
           <div class="col-span-full md:col-start-2 md:col-end-3">
@@ -400,6 +400,7 @@
           </div>
           <button
             id="sendBtn"
+            onclick="send(this)"
             class="hover:bg-light-grayish-blue text-white bg-moderate-blue rounded-md p-2 md:max-w-[100px] max-w-[70px] w-full"
           >
             Send
@@ -428,7 +429,7 @@
             ></textarea>
           </div>
           <button
-            id="replyBtn"
+            onclick="reply(this)"
             class="hover:bg-light-grayish-blue text-white bg-moderate-blue rounded-md p-2 md:max-w-[100px] max-w-[70px] w-full"
           >
             Reply

@@ -6,7 +6,7 @@ function editReply(element) {
   const currentUserReplyText = editReplyContainer.querySelector(
     "[reply-data-user-reply]"
   );
-  const editBtn = document.querySelector("#editBtn");
+  const editBtn = currentUserReplyContainer.querySelector("#editBtn");
 
   if (editReplyContainer.classList.contains("update")) {
     editBtn.classList.remove("pointer-events-none");
@@ -35,7 +35,7 @@ function editReply(element) {
   );
 
   // for update button //
-  const updateButton = document.querySelector("#updateBtn");
+  const updateButton = currentUserReplyContainer.querySelector("#updateBtn");
   updateButton.addEventListener("click", function () {
     editBtn.classList.remove("pointer-events-none");
     editBtn.classList.remove("update");
@@ -129,46 +129,33 @@ function commentReply(element) {
   }
 }
 
-document.addEventListener("dataLoaded", function () {
-  /*  for comment field */
-  const allCommentsContainer = document.querySelectorAll("#comment-section");
-  allCommentsContainer.forEach((commentsContainer) => {
-    commentsContainer.addEventListener("click", function (event) {
-      if (event.target.id === "sendBtn") {
-        const commentResponse = commentsContainer.querySelector("#message");
-        const replyTo = commentsContainer.querySelector(
-          "[comment-data-username]"
-        ).innerText;
+function send(element) {
+  const commentsContainer = element.closest("#comment-section");
+  const articleElement = element.closest("#comment-field");
+  const messageTextarea = articleElement.querySelector("#message");
 
-        if (commentResponse.value.trim() !== "") {
-          currentUserComment(replyTo, commentResponse.value, commentsContainer);
-          commentsContainer.querySelector("#message").value = "";
-          commentsContainer.querySelector("#comment-field").remove();
-        }
-      }
-    });
-  });
+  if (messageTextarea.value.trim() !== "") {
+    const replyTo = commentsContainer.querySelector(
+      "[comment-data-username]"
+    ).innerText;
+    currentUserComment(replyTo, messageTextarea.value, commentsContainer);
+    commentsContainer.querySelector("#comment-field").remove();
+  }
+}
 
-  /* for reply field  */
-  const allReplyContainer = document.querySelectorAll("#replyContainer");
-  allReplyContainer.forEach((replyContainer) => {
-    replyContainer.addEventListener("click", function (event) {
-      if (event.target.id === "replyBtn") {
-        const replyResponse = replyContainer.querySelector("#message");
-        const replyTo = replyContainer.querySelector(
-          "[reply-data-username]"
-        ).innerText;
-
-        if (replyResponse.value.trim() !== "") {
-          currentUserComment(
-            replyTo,
-            replyResponse.value,
-            replyContainer.closest("#comment-section")
-          );
-          commentsContainer.querySelector("#message").value = "";
-          commentsContainer.querySelector("#comment-field").remove();
-        }
-      }
-    });
-  });
-});
+function reply(element) {
+  const replyContainer = element.closest("#replyContainer");
+  const replyResponse = replyContainer.querySelector("#message");
+  const replyTo = replyContainer.querySelector(
+    "[reply-data-username]"
+  ).innerText;
+  if (replyResponse.value.trim() !== "") {
+    currentUserComment(
+      replyTo,
+      replyResponse.value,
+      replyContainer.closest("#comment-section")
+    );
+    replyContainer.querySelector("#message").value = "";
+    replyContainer.querySelector("#comment-field").remove();
+  }
+}
