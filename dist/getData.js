@@ -2,21 +2,47 @@ const commentsContainer = document.querySelector("[data-main]");
 const allCommentsContainer = document.querySelectorAll("#comment-section");
 let currentUser;
 
+document.addEventListener("DOMContentLoaded", async () => {
+  commentsContainer.innerHTML = "";
+
+  let data;
+
+  const savedData = localStorage.getItem("commentsData");
+
+  if (savedData) {
+    data = JSON.parse(savedData);
+    console.log("Using saved data:", data);
+  } else {
+    // Fetch data from the server if not in localStorage
+    try {
+      const res = await axios.get("/data.json");
+      data = res.data;
+
+      // Save fetched data to localStorage
+      localStorage.setItem("commentsData", JSON.stringify(data));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  currentUser = data.currentUser.username;
+  const commentsData = data.comments;
+  commentsData.forEach((comment) => {
+    commentSection(comment);
+  });
+  document.dispatchEvent(new Event("dataLoaded"));
+});
+
 /* Get data from data.json */
 const getData = async function () {
   commentsContainer.innerHTML = "";
   const res = await axios.get("/data.json");
-  currentUser = res.data.currentUser.username;
-  const commentsData = res.data.comments;
-  commentsData.forEach((comment) => {
-    commentSection(comment);
-  });
+  const data = res.data;
+
+  // Save fetched data to localStorage
 
   /*   userScoreCounter(); */
   document.dispatchEvent(new Event("dataLoaded"));
 };
-
-getData();
 
 /* For comment section */
 const commentSection = function (data) {
