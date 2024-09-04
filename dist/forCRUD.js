@@ -77,7 +77,9 @@ function deleteReply(element) {
 const currentUserComment = function (
   replyingTo,
   comment,
-  commentSectiontoAppend
+  commentSectiontoAppend,
+  commentId,
+  commentNumberOfReplies
 ) {
   if (!commentSectiontoAppend.querySelector("#reply-section")) {
     createReplySection(commentSectiontoAppend);
@@ -107,6 +109,25 @@ const currentUserComment = function (
   userReply.innerText = comment;
   userScore.innerText = 0;
   replyArticleContainer.append(replyCard);
+
+  console.log(currentData);
+
+  /*  let commentReplyTo = */
+  let newReply = {
+    id: 3,
+    content:
+      "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
+    createdAt: "1 week ago",
+    score: 4,
+    replyingTo: "maxblagun",
+    user: {
+      image: {
+        png: "./images/avatars/image-ramsesmiron.png",
+        webp: "./images/avatars/image-ramsesmiron.webp",
+      },
+      username: "ramsesmiron",
+    },
+  };
 };
 
 function postReply(element) {
@@ -133,12 +154,21 @@ function send(element) {
   const commentsContainer = element.closest("#comment-section");
   const articleElement = element.closest("#comment-field");
   const messageTextarea = articleElement.querySelector("#message");
+  const commentID = commentsContainer.getAttribute("data");
+  const commentNumberOfReplies =
+    commentsContainer.getAttribute("numberofreplies");
 
   if (messageTextarea.value.trim() !== "") {
     const replyTo = commentsContainer.querySelector(
       "[comment-data-username]"
     ).innerText;
-    currentUserComment(replyTo, messageTextarea.value, commentsContainer);
+    currentUserComment(
+      replyTo,
+      messageTextarea.value,
+      commentsContainer,
+      commentID - 1,
+      commentNumberOfReplies
+    );
     commentsContainer.querySelector("#comment-field").remove();
   }
 }

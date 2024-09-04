@@ -1,17 +1,13 @@
 const commentsContainer = document.querySelector("[data-main]");
-const allCommentsContainer = document.querySelectorAll("#comment-section");
 let currentUser;
 
 document.addEventListener("DOMContentLoaded", async () => {
   commentsContainer.innerHTML = "";
 
-  let data;
-
   const savedData = localStorage.getItem("commentsData");
 
   if (savedData) {
     data = JSON.parse(savedData);
-    console.log("Using saved data:", data);
   } else {
     // Fetch data from the server if not in localStorage
     try {
@@ -29,28 +25,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   commentsData.forEach((comment) => {
     commentSection(comment);
   });
+  const currentData = JSON.parse(localStorage.getItem("commentsData"));
+  console.log(currentData);
   document.dispatchEvent(new Event("dataLoaded"));
 });
-
-/* Get data from data.json */
-const getData = async function () {
-  commentsContainer.innerHTML = "";
-  const res = await axios.get("/data.json");
-  const data = res.data;
-
-  // Save fetched data to localStorage
-
-  /*   userScoreCounter(); */
-  document.dispatchEvent(new Event("dataLoaded"));
-};
 
 /* For comment section */
 const commentSection = function (data) {
   const userReplyData = data.replies;
+  currentReplyCount = userReplyData.length;
   const commentCardTemplate = document.querySelector(
     "[data-user-comment-template]"
   );
   const commentCard = commentCardTemplate.content.cloneNode(true);
+
+  const rootElement = commentCard.querySelector("section");
 
   const userName = commentCard.querySelector("[comment-data-username]");
   const userPostDate = commentCard.querySelector("[comment-user-post-date]");
@@ -67,7 +56,7 @@ const commentSection = function (data) {
   userPicture.src = `/images/avatars/image-${data.user.username}.png`;
   userScore.innerText = data.score;
 
-  /*  if theres a reply it will throw to replySection function */
+  /* If there's a reply, it will call the replySection function */
   if (userReplyData.length !== 0) {
     const commentSectionContainer =
       commentCard.querySelector("#comment-section");
@@ -81,6 +70,8 @@ const commentSection = function (data) {
     });
   }
 
+  rootElement.setAttribute("data", `${data.id}`);
+  rootElement.setAttribute("data", `${data.id}`);
   commentsContainer.append(commentCard);
 };
 
@@ -139,6 +130,10 @@ const currentReplySection = function (data, commentSectiontoAppend) {
   userReply.innerText = data.content;
   userScore.innerText = data.score;
   replyArticleContainer.append(replyCard);
+
+  /*  let newReply = {
+
+  } */
 };
 
 /* For upvote and downvote */
