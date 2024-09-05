@@ -78,8 +78,8 @@ const currentUserComment = function (
   replyingTo,
   comment,
   commentSectiontoAppend,
-  commentId,
-  commentNumberOfReplies
+  commentID,
+  numberOfReplies
 ) {
   if (!commentSectiontoAppend.querySelector("#reply-section")) {
     createReplySection(commentSectiontoAppend);
@@ -105,29 +105,28 @@ const currentUserComment = function (
   userPicture.src = `/images/avatars/image-${currentUser}.png`;
   userName.innerText = currentUser;
   userPostDate.innerText = "1 min ago";
-  userReplyingTo.innerText = replyingTo;
+  userReplyingTo.innerText = `@${replyingTo}`;
   userReply.innerText = comment;
   userScore.innerText = 0;
   replyArticleContainer.append(replyCard);
 
-  console.log(currentData);
-
-  /*  let commentReplyTo = */
+  const commentIdToUpdate = commentID; // ID of the comment you want to update
   let newReply = {
-    id: 3,
-    content:
-      "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
-    createdAt: "1 week ago",
-    score: 4,
-    replyingTo: "maxblagun",
+    id: numberOfReplies + 1,
+    content: comment,
+    createdAt: "Just now",
+    score: 0,
+    replyingTo: replyingTo,
     user: {
       image: {
-        png: "./images/avatars/image-ramsesmiron.png",
-        webp: "./images/avatars/image-ramsesmiron.webp",
+        png: `/images/avatars/image-${currentUser}.png`,
+        webp: `/images/avatars/image-${currentUser}.webp`,
       },
-      username: "ramsesmiron",
+      username: `${currentUser}`,
     },
   };
+
+  updateCommentReply(commentIdToUpdate, newReply);
 };
 
 function postReply(element) {
@@ -152,11 +151,10 @@ function commentReply(element) {
 
 function send(element) {
   const commentsContainer = element.closest("#comment-section");
+  const numberOfReplies = commentsContainer.getAttribute("numberofreplies");
+  const commentID = commentsContainer.getAttribute("data");
   const articleElement = element.closest("#comment-field");
   const messageTextarea = articleElement.querySelector("#message");
-  const commentID = commentsContainer.getAttribute("data");
-  const commentNumberOfReplies =
-    commentsContainer.getAttribute("numberofreplies");
 
   if (messageTextarea.value.trim() !== "") {
     const replyTo = commentsContainer.querySelector(
@@ -166,8 +164,8 @@ function send(element) {
       replyTo,
       messageTextarea.value,
       commentsContainer,
-      commentID - 1,
-      commentNumberOfReplies
+      commentID,
+      numberOfReplies
     );
     commentsContainer.querySelector("#comment-field").remove();
   }

@@ -4,6 +4,7 @@ let currentUser;
 document.addEventListener("DOMContentLoaded", async () => {
   commentsContainer.innerHTML = "";
 
+  let data;
   const savedData = localStorage.getItem("commentsData");
 
   if (savedData) {
@@ -33,7 +34,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 /* For comment section */
 const commentSection = function (data) {
   const userReplyData = data.replies;
-  currentReplyCount = userReplyData.length;
   const commentCardTemplate = document.querySelector(
     "[data-user-comment-template]"
   );
@@ -61,27 +61,30 @@ const commentSection = function (data) {
     const commentSectionContainer =
       commentCard.querySelector("#comment-section");
 
-    userReplyData.forEach((reply) => {
+    userReplyData.forEach((reply, index) => {
+      console.log(index);
       if (reply.user.username === currentUser) {
-        currentReplySection(reply, commentSectionContainer);
+        currentReplySection(reply, commentSectionContainer, index);
       } else {
-        replySection(reply, commentSectionContainer);
+        replySection(reply, commentSectionContainer, index);
       }
     });
   }
 
   rootElement.setAttribute("data", `${data.id}`);
-  rootElement.setAttribute("data", `${data.id}`);
+  rootElement.setAttribute("numberOfReplies", `${userReplyData.length}`);
   commentsContainer.append(commentCard);
 };
 
 /* For reply section */
 
-const replySection = function (data, commentSectiontoAppend) {
+const replySection = function (data, commentSectiontoAppend, replyID) {
   const replyArticleContainer =
     commentSectiontoAppend.querySelector("#reply-section");
   const replyCardTemplate = document.querySelector("[data-reply-template]");
   const replyCard = replyCardTemplate.content.cloneNode(true);
+
+  const rootElement = replyCard.querySelector("#replyContainer");
 
   const userPicture = replyCard.querySelector(
     "[reply-data-user-profile-picture]"
@@ -100,11 +103,12 @@ const replySection = function (data, commentSectiontoAppend) {
   userReplyingTo.innerText = `@${data.replyingTo}`;
   userReply.innerText = data.content;
   userScore.innerText = data.score;
+  rootElement.setAttribute("replyId", `${replyID}`);
   replyArticleContainer.append(replyCard);
 };
 
 /* For reply section of currentUser*/
-const currentReplySection = function (data, commentSectiontoAppend) {
+const currentReplySection = function (data, commentSectiontoAppend, replyID) {
   const replyArticleContainer =
     commentSectiontoAppend.querySelector("#reply-section");
   const replyCardTemplate = document.querySelector(
@@ -112,6 +116,8 @@ const currentReplySection = function (data, commentSectiontoAppend) {
   );
   const replyCard = replyCardTemplate.content.cloneNode(true);
 
+  const rootElement = replyCard.querySelector("#replyContainer");
+
   const userPicture = replyCard.querySelector(
     "[reply-data-user-profile-picture]"
   );
@@ -129,11 +135,8 @@ const currentReplySection = function (data, commentSectiontoAppend) {
   userReplyingTo.innerText = `@${data.replyingTo}`;
   userReply.innerText = data.content;
   userScore.innerText = data.score;
+  rootElement.setAttribute("replyId", `${replyID}`);
   replyArticleContainer.append(replyCard);
-
-  /*  let newReply = {
-
-  } */
 };
 
 /* For upvote and downvote */

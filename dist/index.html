@@ -253,127 +253,131 @@
     </template>
 
     <template data-currentuser-reply-template>
-      <div
-        id="current-user-post"
-        class="post-section-1 h-full crud-delete:bg-white crud-delete:rounded-lg p-4 grid-cols-2 ml-10 md:ml-[3.5rem] md:grid-rows-1 md:grid-cols-custom grid"
-      >
-        <!-- profile section both for mobile and desktop view -->
+      <div id="replyContainer">
         <div
-          id="forEdit"
-          class="col-span-full md:col-start-2 md:col-end-3 w-full grid group"
+          id="current-user-post"
+          class="post-section-1 h-full crud-delete:bg-white crud-delete:rounded-lg p-4 grid-cols-2 ml-10 md:ml-[3.5rem] md:grid-rows-1 md:grid-cols-custom grid"
         >
-          <div class="">
-            <div class="profile-section flex items-center gap-3 mb-3">
-              <img
-                reply-data-user-profile-picture
-                class="size-[50px] md:size-[35px]"
-                src="/images/avatars/image-ramsesmiron.png"
-                alt="ramsesmiron"
-              />
-              <h2 class="text-dark-blue font-fw--bold2" reply-data-username>
-                ramsesmiron
-              </h2>
+          <!-- profile section both for mobile and desktop view -->
+          <div
+            id="forEdit"
+            class="col-span-full md:col-start-2 md:col-end-3 w-full grid group"
+          >
+            <div class="">
+              <div class="profile-section flex items-center gap-3 mb-3">
+                <img
+                  reply-data-user-profile-picture
+                  class="size-[50px] md:size-[35px]"
+                  src="/images/avatars/image-ramsesmiron.png"
+                  alt="ramsesmiron"
+                />
+                <h2 class="text-dark-blue font-fw--bold2" reply-data-username>
+                  ramsesmiron
+                </h2>
+                <p
+                  class="bg-moderate-blue text-xs font-fw--bold2 px-2 rounded-sm text-white hidden-content"
+                >
+                  you
+                </p>
+                <p class="text-grayish-blue" reply-user-post-date>
+                  1 weeks ago
+                </p>
+                <!--  reply container for desktop view -->
+              </div>
               <p
-                class="bg-moderate-blue text-xs font-fw--bold2 px-2 rounded-sm text-white hidden-content"
+                id="editText"
+                class="text-grayish-blue text-left group-update: group-update:border-[1px] group-update:border-moderate-blue group-update:rounded-md p-2 group-update:cursor-text"
               >
-                you
+                <span
+                  class="font-fw--bold2 mr-1 group-update:text-grayish-blue text-moderate-blue cursor-pointer"
+                  reply-data-user-replyingto
+                  >@maxblagun</span
+                >
+                <span
+                  class="outline-none group-update:cursor-text caret-moderate-blue"
+                  reply-data-user-reply
+                  contenteditable="false"
+                  >Though it seems the drag deature could be improved. But
+                  overall it looks incredible. You've nailed the design and the
+                  responsiveness at various breakpoints works really well.</span
+                >
               </p>
-              <p class="text-grayish-blue" reply-user-post-date>1 weeks ago</p>
-              <!--  reply container for desktop view -->
             </div>
-            <p
-              id="editText"
-              class="text-grayish-blue text-left group-update: group-update:border-[1px] group-update:border-moderate-blue group-update:rounded-md p-2 group-update:cursor-text"
+            <button
+              id="updateBtn"
+              class="hidden group-update:block hover:bg-light-grayish-blue mt-2 place-self-end text-white bg-moderate-blue rounded-md p-2 md:max-w-[100px] max-w-[70px] w-full"
             >
-              <span
-                class="font-fw--bold2 mr-1 group-update:text-grayish-blue text-moderate-blue cursor-pointer"
-                reply-data-user-replyingto
-                >@maxblagun</span
-              >
-              <span
-                class="outline-none group-update:cursor-text caret-moderate-blue"
-                reply-data-user-reply
-                contenteditable="false"
-                >Though it seems the drag deature could be improved. But overall
-                it looks incredible. You've nailed the design and the
-                responsiveness at various breakpoints works really well.</span
-              >
-            </p>
-          </div>
-          <button
-            id="updateBtn"
-            class="hidden group-update:block hover:bg-light-grayish-blue mt-2 place-self-end text-white bg-moderate-blue rounded-md p-2 md:max-w-[100px] max-w-[70px] w-full"
-          >
-            Update
-          </button>
-        </div>
-
-        <div
-          class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
-        >
-          <svg
-            onclick="upVote(this)"
-            width="11"
-            height="11"
-            xmlns="http://www.w3.org/2000/svg"
-            class="fill-light-grayish-blue cursor-pointer hover:fill-current hover:text-moderate-blue"
-          >
-            <path
-              d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"
-            />
-          </svg>
-          <p
-            class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-center"
-            reply-data-user-score
-          >
-            12
-          </p>
-          <svg
-            onclick="downVote(this)"
-            width="11"
-            height="3"
-            xmlns="http://www.w3.org/2000/svg"
-            class="fill-light-grayish-blue cursor-pointer hover:fill-current hover:text-moderate-blue"
-          >
-            <path
-              d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"
-            />
-          </svg>
-        </div>
-
-        <div
-          class="md:row-span-full md:mb-auto -ml-5 max-xm:ml-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center font-fw--bold2 text-lg"
-        >
-          <div
-            onclick="deleteReply(this)"
-            class="flex items-center select-none gap-2 cursor-pointer group text-soft-red"
-            id="delete-post"
-          >
-            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
-              <path
-                class="fill-soft-red font-fw--bold2 group-hover:fill-pale-red"
-                d="M1.167 12.448c0 .854.7 1.552 1.555 1.552h6.222c.856 0 1.556-.698 1.556-1.552V3.5H1.167v8.948Zm10.5-11.281H8.75L7.773 0h-3.88l-.976 1.167H0v1.166h11.667V1.167Z"
-              />
-            </svg>
-            <p class="font-fw--bold2 group-hover:text-pale-red">Delete</p>
+              Update
+            </button>
           </div>
 
           <div
-            onclick="editReply(this)"
-            id="editBtn"
-            class="flex cursor-pointer items-center gap-2 select-none ml-4 pr-4 max-xm:ml-0 group text-light-grayish-blue"
+            class="md:row-span-full crud-delete:md:h-[80px] md:h-[80px] max-w-[100px] justify-center rounded-md crud-delete:md:max-w-[40px] md:max-w-[40px] crud-delete:md:rounded-lg md:py-2 crud-delete:bg-light-gray flex items-center gap-2 font-fw--bold3 md:grid md:place-items-center md:col-start-1"
           >
-            <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              onclick="upVote(this)"
+              width="11"
+              height="11"
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-light-grayish-blue cursor-pointer hover:fill-current hover:text-moderate-blue"
+            >
               <path
-                class="fill-moderate-blue group-update:fill-light-grayish-blue group-hover:fill-light-grayish-blue"
-                d="M13.479 2.872 11.08.474a1.75 1.75 0 0 0-2.327-.06L.879 8.287a1.75 1.75 0 0 0-.5 1.06l-.375 3.648a.875.875 0 0 0 .875.954h.078l3.65-.333c.399-.04.773-.216 1.058-.499l7.875-7.875a1.68 1.68 0 0 0-.061-2.371Zm-2.975 2.923L8.159 3.449 9.865 1.7l2.389 2.39-1.75 1.706Z"
+                d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"
               />
             </svg>
             <p
-              class="text-moderate-blue font-fw--bold2 group-hover:text-light-grayish-blue group-update:text-light-grayish-blue"
+              class="text-moderate-blue font-fw--bold2 flex justify-center w-10 md:justify-center"
+              reply-data-user-score
             >
-              Edit
+              12
             </p>
+            <svg
+              onclick="downVote(this)"
+              width="11"
+              height="3"
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-light-grayish-blue cursor-pointer hover:fill-current hover:text-moderate-blue"
+            >
+              <path
+                d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"
+              />
+            </svg>
+          </div>
+
+          <div
+            class="md:row-span-full md:mb-auto -ml-5 max-xm:ml-auto max-xm:flex-col max-xm:items-start md:-ml-[10rem] reply-button md:col-start-3 md:col-end-4 flex items-center font-fw--bold2 text-lg"
+          >
+            <div
+              onclick="deleteReply(this)"
+              class="flex items-center select-none gap-2 cursor-pointer group text-soft-red"
+              id="delete-post"
+            >
+              <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  class="fill-soft-red font-fw--bold2 group-hover:fill-pale-red"
+                  d="M1.167 12.448c0 .854.7 1.552 1.555 1.552h6.222c.856 0 1.556-.698 1.556-1.552V3.5H1.167v8.948Zm10.5-11.281H8.75L7.773 0h-3.88l-.976 1.167H0v1.166h11.667V1.167Z"
+                />
+              </svg>
+              <p class="font-fw--bold2 group-hover:text-pale-red">Delete</p>
+            </div>
+
+            <div
+              onclick="editReply(this)"
+              id="editBtn"
+              class="flex cursor-pointer items-center gap-2 select-none ml-4 pr-4 max-xm:ml-0 group text-light-grayish-blue"
+            >
+              <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  class="fill-moderate-blue group-update:fill-light-grayish-blue group-hover:fill-light-grayish-blue"
+                  d="M13.479 2.872 11.08.474a1.75 1.75 0 0 0-2.327-.06L.879 8.287a1.75 1.75 0 0 0-.5 1.06l-.375 3.648a.875.875 0 0 0 .875.954h.078l3.65-.333c.399-.04.773-.216 1.058-.499l7.875-7.875a1.68 1.68 0 0 0-.061-2.371Zm-2.975 2.923L8.159 3.449 9.865 1.7l2.389 2.39-1.75 1.706Z"
+                />
+              </svg>
+              <p
+                class="text-moderate-blue font-fw--bold2 group-hover:text-light-grayish-blue group-update:text-light-grayish-blue"
+              >
+                Edit
+              </p>
+            </div>
           </div>
         </div>
       </div>
