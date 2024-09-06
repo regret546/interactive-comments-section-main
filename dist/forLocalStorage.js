@@ -15,12 +15,11 @@ removeLocalStorage = function () {
   localStorage.clear();
 };
 
-const updateCommentReply = function (commentIdToUpdate, newReply) {
+const addCommentReply = function (commentIdToUpdate, newReply) {
   // Step 1: Retrieve and parse the existing data
   const savedDataString = localStorage.getItem("commentsData");
   if (savedDataString) {
     const savedData = JSON.parse(savedDataString);
-
     console.log(savedData.comments);
 
     // Step 2: Find the comment to update
@@ -41,4 +40,21 @@ const updateCommentReply = function (commentIdToUpdate, newReply) {
   }
 };
 
-removeLocalStorage();
+const updateCommentReply = function (updatedReply, commentId, replyID) {
+  /*   const replyToUpdate = savedData.comments; */
+  const savedDataString = localStorage.getItem("commentsData");
+  if (savedDataString) {
+    const savedData = JSON.parse(savedDataString);
+    const replyToUpdate = savedData.comments[commentId - 1].replies[replyID];
+
+    if (replyToUpdate) {
+      replyToUpdate.content = updatedReply;
+      localStorage.setItem("commentsData", JSON.stringify(savedData));
+    } else {
+      console.log("Reply not found");
+    }
+  }
+};
+
+/* removeLocalStorage();
+ */

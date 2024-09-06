@@ -37,12 +37,20 @@ function editReply(element) {
   // for update button //
   const updateButton = currentUserReplyContainer.querySelector("#updateBtn");
   updateButton.addEventListener("click", function () {
+    const commentID = updateButton.closest("#comment-section");
+    const replyID = updateButton.closest("#replyContainer");
     editBtn.classList.remove("pointer-events-none");
     editBtn.classList.remove("update");
     editReplyContainer.classList.remove("update");
     currentUserReplyText.setAttribute("contenteditable", "false");
     currentUserReplyText.id = "";
     currentUserReplyText.innerText = currentUserReplyText.textContent;
+
+    updateCommentReply(
+      currentUserReplyText.textContent,
+      commentID.getAttribute("data"),
+      replyID.getAttribute("replyid")
+    );
   });
 }
 
@@ -126,7 +134,7 @@ const currentUserComment = function (
     },
   };
 
-  updateCommentReply(commentIdToUpdate, newReply);
+  addCommentReply(commentIdToUpdate, newReply);
 };
 
 function postReply(element) {

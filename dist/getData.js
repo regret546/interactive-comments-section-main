@@ -62,7 +62,6 @@ const commentSection = function (data) {
       commentCard.querySelector("#comment-section");
 
     userReplyData.forEach((reply, index) => {
-      console.log(index);
       if (reply.user.username === currentUser) {
         currentReplySection(reply, commentSectionContainer, index);
       } else {
