@@ -130,12 +130,13 @@ const currentReplySection = function (data, commentSectiontoAppend, replyID) {
 
   userPicture.src = `/images/avatars/image-${data.user.username}.png`;
   userName.innerText = data.user.username;
-  userPostDate.innerText = data.createdAt;
+  userPostDate.innerText = getRelativeTime(`${data.createdAt}`);
   userReplyingTo.innerText = `@${data.replyingTo}`;
   userReply.innerText = data.content;
   userScore.innerText = data.score;
   rootElement.setAttribute("replyId", `${replyID}`);
   replyArticleContainer.append(replyCard);
+  console.log(data.createdAt);
 };
 
 /* For upvote and downvote */

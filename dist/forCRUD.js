@@ -112,7 +112,7 @@ const currentUserComment = function (
 
   userPicture.src = `/images/avatars/image-${currentUser}.png`;
   userName.innerText = currentUser;
-  userPostDate.innerText = "1 min ago";
+  userPostDate.innerText = "few seconds ago";
   userReplyingTo.innerText = `@${replyingTo}`;
   userReply.innerText = comment;
   userScore.innerText = 0;
@@ -122,7 +122,7 @@ const currentUserComment = function (
   let newReply = {
     id: numberOfReplies + 1,
     content: comment,
-    createdAt: "Just now",
+    createdAt: new Date(),
     score: 0,
     replyingTo: replyingTo,
     user: {
@@ -185,11 +185,16 @@ function reply(element) {
   const replyTo = replyContainer.querySelector(
     "[reply-data-username]"
   ).innerText;
+  const replyParentContainer = replyContainer.closest("#comment-section");
+  const commentID = replyParentContainer.getAttribute("data");
+  const numberOfReplies = replyParentContainer.getAttribute("numberofreplies");
   if (replyResponse.value.trim() !== "") {
     currentUserComment(
       replyTo,
       replyResponse.value,
-      replyContainer.closest("#comment-section")
+      replyParentContainer,
+      commentID,
+      numberOfReplies
     );
     replyContainer.querySelector("#message").value = "";
     replyContainer.querySelector("#comment-field").remove();

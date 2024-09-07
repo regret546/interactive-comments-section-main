@@ -56,5 +56,4 @@ const updateCommentReply = function (updatedReply, commentId, replyID) {
   }
 };
 
-/* removeLocalStorage();
- */
+removeLocalStorage();
