@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     commentSection(comment);
   });
   const currentData = JSON.parse(localStorage.getItem("commentsData"));
-  console.log(currentData);
   document.dispatchEvent(new Event("dataLoaded"));
 });
 
@@ -61,11 +60,11 @@ const commentSection = function (data) {
     const commentSectionContainer =
       commentCard.querySelector("#comment-section");
 
-    userReplyData.forEach((reply, index) => {
+    userReplyData.forEach((reply) => {
       if (reply.user.username === currentUser) {
-        currentReplySection(reply, commentSectionContainer, index);
+        currentReplySection(reply, commentSectionContainer, reply.id);
       } else {
-        replySection(reply, commentSectionContainer, index);
+        replySection(reply, commentSectionContainer, reply.id);
       }
     });
   }
@@ -136,7 +135,6 @@ const currentReplySection = function (data, commentSectiontoAppend, replyID) {
   userScore.innerText = data.score;
   rootElement.setAttribute("replyId", `${replyID}`);
   replyArticleContainer.append(replyCard);
-  console.log(data.createdAt);
 };
 
 /* For upvote and downvote */

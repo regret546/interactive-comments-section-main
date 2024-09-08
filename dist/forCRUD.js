@@ -68,10 +68,18 @@ function deleteReply(element) {
   yesDeleteBtn.addEventListener("click", handleDelete);
   noDeleteBtn.addEventListener("click", handleDelete);
   const currentUserPostToDelete = element.closest("#current-user-post");
+  const commentId = currentUserPostToDelete
+    .closest("#comment-section")
+    .getAttribute("data");
+  const replyIdToDelete = currentUserPostToDelete
+    .closest("#replyContainer")
+    .getAttribute("replyid");
 
   function handleDelete(event) {
     if (event.target === yesDeleteBtn) {
       currentUserPostToDelete.remove();
+
+      deleteReplyOnLocalStorage(commentId - 1, replyIdToDelete);
       console.log("Post deleted.");
     } else if (event.target === noDeleteBtn) {
       console.log("Delete canceled.");

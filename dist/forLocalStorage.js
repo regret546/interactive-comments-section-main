@@ -7,6 +7,7 @@ if (savedData) {
     console.error("Error parsing JSON:", error);
     // Handle invalid JSON here, perhaps clear localStorage or refetch data
     localStorage.removeItem("commentsData");
+    console.log(savedData);
     // Refetch data if JSON is invalid
   }
 }
@@ -16,20 +17,15 @@ removeLocalStorage = function () {
 };
 
 const addCommentReply = function (commentIdToUpdate, newReply) {
-  // Step 1: Retrieve and parse the existing data
   const savedDataString = localStorage.getItem("commentsData");
   if (savedDataString) {
     const savedData = JSON.parse(savedDataString);
-    console.log(savedData.comments);
 
-    // Step 2: Find the comment to update
     const commentToUpdate = savedData.comments[commentIdToUpdate - 1];
 
     if (commentToUpdate) {
-      // Add the new reply to the replies array of the comment
       commentToUpdate.replies.push(newReply);
 
-      // Step 3: Save the updated data back to localStorage
       localStorage.setItem("commentsData", JSON.stringify(savedData));
       console.log("Updated data saved to localStorage.");
     } else {
@@ -56,4 +52,27 @@ const updateCommentReply = function (updatedReply, commentId, replyID) {
   }
 };
 
-removeLocalStorage();
+const deleteReplyOnLocalStorage = function (commentsId, replyIdToDelete) {
+  let data = JSON.parse(localStorage.getItem("commentsData"));
+
+  let comment = data.comments[commentsId];
+  console.log(replyIdToDelete);
+  console.log(commentsId);
+
+  if (comment) {
+    // Filter out the reply with the given replyId
+    comment.replies = comment.replies.filter(
+      (reply) => reply.id !== replyIdToDelete
+    );
+
+    // Save the updated data back to localStorage
+    localStorage.setItem("commentsData", JSON.stringify(data));
+
+    console.log("Reply deleted successfully!");
+  } else {
+    console.log("Comment not found.");
+  }
+  console.log(data);
+};
+
+/* removeLocalStorage(); */
