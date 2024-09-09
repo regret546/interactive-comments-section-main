@@ -41,10 +41,17 @@ const updateCommentReply = function (updatedReply, commentId, replyID) {
   const savedDataString = localStorage.getItem("commentsData");
   if (savedDataString) {
     const savedData = JSON.parse(savedDataString);
-    const replyToUpdate = savedData.comments[commentId - 1].replies[replyID];
+    const replies = savedData.comments[commentId - 1].replies;
 
-    if (replyToUpdate) {
-      replyToUpdate.content = updatedReply;
+    if (replies) {
+      replies.forEach((reply) => {
+        if (reply.id === Number(replyID)) {
+          reply.content = updatedReply;
+          console.log("Reply successfully updated");
+        } else {
+          console.log("error");
+        }
+      });
       localStorage.setItem("commentsData", JSON.stringify(savedData));
     } else {
       console.log("Reply not found");
@@ -53,26 +60,24 @@ const updateCommentReply = function (updatedReply, commentId, replyID) {
 };
 
 const deleteReplyOnLocalStorage = function (commentsId, replyIdToDelete) {
-  let data = JSON.parse(localStorage.getItem("commentsData"));
+  const savedDataString = localStorage.getItem("commentsData");
 
-  let comment = data.comments[commentsId];
-  console.log(replyIdToDelete);
-  console.log(commentsId);
+  if (savedDataString) {
+    const savedData = JSON.parse(savedDataString);
+    const comment = savedData.comments[commentsId];
 
-  if (comment) {
-    // Filter out the reply with the given replyId
-    comment.replies = comment.replies.filter(
-      (reply) => reply.id !== replyIdToDelete
-    );
+    if (comment) {
+      console.log(comment.replies);
 
-    // Save the updated data back to localStorage
-    localStorage.setItem("commentsData", JSON.stringify(data));
+      // Ensure replyIdToDelete is a number
+      comment.replies = comment.replies.filter(
+        (reply) => reply.id !== Number(replyIdToDelete)
+      );
 
-    console.log("Reply deleted successfully!");
-  } else {
-    console.log("Comment not found.");
+      localStorage.setItem("commentsData", JSON.stringify(savedData));
+      console.log("Reply deleted successfully!");
+    } else {
+      console.log("Comment not found.");
+    }
   }
-  console.log(data);
 };
-
-/* removeLocalStorage(); */

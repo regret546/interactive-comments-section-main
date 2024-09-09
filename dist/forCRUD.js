@@ -78,7 +78,6 @@ function deleteReply(element) {
   function handleDelete(event) {
     if (event.target === yesDeleteBtn) {
       currentUserPostToDelete.remove();
-
       deleteReplyOnLocalStorage(commentId - 1, replyIdToDelete);
       console.log("Post deleted.");
     } else if (event.target === noDeleteBtn) {
@@ -128,7 +127,7 @@ const currentUserComment = function (
 
   const commentIdToUpdate = commentID; // ID of the comment you want to update
   let newReply = {
-    id: numberOfReplies + 1,
+    id: parseInt(numberOfReplies, 10) + 1,
     content: comment,
     createdAt: new Date(),
     score: 0,
