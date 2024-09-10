@@ -49,7 +49,7 @@ const commentSection = function (data) {
   );
 
   userName.innerText = data.user.username;
-  userPostDate.innerText = data.createdAt;
+  userPostDate.innerText = getRelativeTime(data.createdAt);
   userComment.innerText = data.content;
   userPicture.alt = data.user.username;
   userPicture.src = `/images/avatars/image-${data.user.username}.png`;

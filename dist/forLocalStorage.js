@@ -48,8 +48,6 @@ const updateCommentReply = function (updatedReply, commentId, replyID) {
         if (reply.id === Number(replyID)) {
           reply.content = updatedReply;
           console.log("Reply successfully updated");
-        } else {
-          console.log("error");
         }
       });
       localStorage.setItem("commentsData", JSON.stringify(savedData));
@@ -67,17 +65,16 @@ const deleteReplyOnLocalStorage = function (commentsId, replyIdToDelete) {
     const comment = savedData.comments[commentsId];
 
     if (comment) {
-      console.log(comment.replies);
-
       // Ensure replyIdToDelete is a number
       comment.replies = comment.replies.filter(
         (reply) => reply.id !== Number(replyIdToDelete)
       );
 
       localStorage.setItem("commentsData", JSON.stringify(savedData));
-      console.log("Reply deleted successfully!");
     } else {
       console.log("Comment not found.");
     }
   }
 };
+/* removeLocalStorage();
+ */

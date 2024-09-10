@@ -79,7 +79,7 @@ function deleteReply(element) {
     if (event.target === yesDeleteBtn) {
       currentUserPostToDelete.remove();
       deleteReplyOnLocalStorage(commentId - 1, replyIdToDelete);
-      console.log("Post deleted.");
+      console.log("Reply deleted.");
     } else if (event.target === noDeleteBtn) {
       console.log("Delete canceled.");
     }
@@ -109,6 +109,10 @@ const currentUserComment = function (
   const userPicture = replyCard.querySelector(
     "[reply-data-user-profile-picture]"
   );
+
+  const replyID = replyCard.querySelector("#replyContainer");
+  replyID.setAttribute("replyid", parseInt(numberOfReplies, 10) + 1);
+
   const userName = replyCard.querySelector("[reply-data-username]");
   const userPostDate = replyCard.querySelector("[reply-user-post-date]");
   const userReplyingTo = replyCard.querySelector(
