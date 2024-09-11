@@ -96,6 +96,11 @@ const currentUserComment = function (
   commentID,
   numberOfReplies
 ) {
+  console.log(replyingTo);
+  console.log(comment);
+  console.log(commentSectiontoAppend);
+  console.log(commentID);
+  console.log(numberOfReplies);
   if (!commentSectiontoAppend.querySelector("#reply-section")) {
     createReplySection(commentSectiontoAppend);
   }
@@ -120,6 +125,11 @@ const currentUserComment = function (
   );
   const userReply = replyCard.querySelector("[reply-data-user-reply]");
   const userScore = replyCard.querySelector("[reply-data-user-score]");
+
+  commentSectiontoAppend.setAttribute(
+    "numberofreplies",
+    parseInt(numberOfReplies, 10) + 1
+  );
 
   userPicture.src = `/images/avatars/image-${currentUser}.png`;
   userName.innerText = currentUser;

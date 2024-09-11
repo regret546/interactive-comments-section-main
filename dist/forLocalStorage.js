@@ -3,11 +3,12 @@ const savedData = localStorage.getItem("commentsData");
 if (savedData) {
   try {
     data = JSON.parse(savedData);
+    console.log(data);
   } catch (error) {
     console.error("Error parsing JSON:", error);
     // Handle invalid JSON here, perhaps clear localStorage or refetch data
     localStorage.removeItem("commentsData");
-    console.log(savedData);
+
     // Refetch data if JSON is invalid
   }
 }
@@ -76,5 +77,29 @@ const deleteReplyOnLocalStorage = function (commentsId, replyIdToDelete) {
     }
   }
 };
-/* removeLocalStorage();
- */
+
+const updateVoteCommentOnLocalStorage = function (
+  parentElement,
+  scoreToAppend
+) {
+  const commentId = parentElement
+    .closest("#comment-section")
+    .getAttribute("data");
+  const savedDataString = localStorage.getItem("commentsData");
+  if (savedDataString) {
+    const savedData = JSON.parse(savedDataString);
+    const comment = savedData.comments[commentId - 1];
+    comment.score = scoreToAppend;
+    localStorage.setItem("commentsData", JSON.stringify(savedData));
+  } else {
+    console.log("error on vote");
+  }
+};
+
+const updateVoteReplyOnLocalStorage = function (parentElement) {
+  const savedDataString = localStorage.getItem("commentsData");
+  if (savedDataString) {
+  }
+};
+
+/* removeLocalStorage(); */
