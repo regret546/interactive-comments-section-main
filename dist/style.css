@@ -615,6 +615,10 @@ html {
   position: relative;
 }
 
+.inset-0{
+  inset: 0px;
+}
+
 .left-1\/2{
   left: 50%;
 }
@@ -629,6 +633,10 @@ html {
 
 .col-span-full{
   grid-column: 1 / -1;
+}
+
+.m-auto{
+  margin: auto;
 }
 
 .mx-6{
@@ -711,6 +719,26 @@ html {
   max-height: 130px;
 }
 
+.max-h-\[500px\]{
+  max-height: 500px;
+}
+
+.max-h-\[300px\]{
+  max-height: 300px;
+}
+
+.max-h-\[250px\]{
+  max-height: 250px;
+}
+
+.max-h-\[200px\]{
+  max-height: 200px;
+}
+
+.max-h-\[220px\]{
+  max-height: 220px;
+}
+
 .min-h-full{
   min-height: 100%;
 }
@@ -763,6 +791,38 @@ html {
 
 .transform{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+@keyframes fade-down{
+  0%{
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+
+  100%{
+    oapcity: 1px;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-down{
+  animation: fade-down 200ms ease-in-out;
+}
+
+@keyframes fade-down{
+  0%{
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+  }
+
+  100%{
+    oapcity: 1px;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-up{
+  animation: fade-down 200ms ease-in-out;
 }
 
 .cursor-pointer{

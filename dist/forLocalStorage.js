@@ -116,4 +116,4 @@ const updateVoteReplyOnLocalStorage = function (parentElement, scoreToAppend) {
   }
 };
 
-/* removeLocalStorage(); */
+removeLocalStorage();

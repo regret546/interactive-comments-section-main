@@ -67,7 +67,7 @@ function deleteReply(element) {
 
   yesDeleteBtn.addEventListener("click", handleDelete);
   noDeleteBtn.addEventListener("click", handleDelete);
-  const currentUserPostToDelete = element.closest("#current-user-post");
+  const currentUserPostToDelete = element.closest("#replyContainer");
   const commentId = currentUserPostToDelete
     .closest("#comment-section")
     .getAttribute("data");

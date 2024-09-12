@@ -3,6 +3,32 @@ module.exports = {
   content: ["./dist/*.{html,js}"], // Add your desired output folder path here
   theme: {
     extend: {
+      keyframes: {
+        "fade-down": {
+          "0%": {
+            opacity: 0,
+            transform: "translateY(-30px) scale(0.9)",
+          },
+          "100%": {
+            oapcity: 1,
+            transform: "translateY(0) scale(1)",
+          },
+        },
+        "fade-up": {
+          "0%": {
+            opacity: 0,
+            transform: "translateY(30px) scale(0.9)",
+          },
+          "100%": {
+            oapcity: 1,
+            transform: "translateY(0) scale(1)",
+          },
+        },
+      },
+      animation: {
+        "fade-down": "fade-down 200ms ease-in-out",
+        "fade-up": "fade-down 200ms ease-in-out",
+      },
       colors: {
         /* Primary */
         "moderate-blue": "hsl(238, 40%, 52%)",
