@@ -96,9 +96,23 @@ const updateVoteCommentOnLocalStorage = function (
   }
 };
 
-const updateVoteReplyOnLocalStorage = function (parentElement) {
+const updateVoteReplyOnLocalStorage = function (parentElement, scoreToAppend) {
+  const repyId = parentElement
+    .closest("#replyContainer")
+    .getAttribute("replyid");
+  const commentId = parentElement
+    .closest("#comment-section")
+    .getAttribute("data");
   const savedDataString = localStorage.getItem("commentsData");
   if (savedDataString) {
+    const savedData = JSON.parse(savedDataString);
+    const replies = savedData.comments[commentId - 1].replies;
+    replies.forEach((reply) => {
+      if (reply.id === Number(repyId)) {
+        reply.score = scoreToAppend;
+      }
+    });
+    localStorage.setItem("commentsData", JSON.stringify(savedData));
   }
 };
 

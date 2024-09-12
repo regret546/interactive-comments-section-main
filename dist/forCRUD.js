@@ -96,11 +96,6 @@ const currentUserComment = function (
   commentID,
   numberOfReplies
 ) {
-  console.log(replyingTo);
-  console.log(comment);
-  console.log(commentSectiontoAppend);
-  console.log(commentID);
-  console.log(numberOfReplies);
   if (!commentSectiontoAppend.querySelector("#reply-section")) {
     createReplySection(commentSectiontoAppend);
   }

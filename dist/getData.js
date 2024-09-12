@@ -143,12 +143,11 @@ function upVote(element) {
   const voteText = parentContainer.querySelector("p");
   const currentVote = parseInt(voteText.textContent);
   voteText.innerText = currentVote + 1;
-  console.log(parentContainer);
 
   if (parentContainer.querySelector("[comment-data-user-score]")) {
     updateVoteCommentOnLocalStorage(parentContainer, currentVote + 1);
   } else {
-    console.log("reply");
+    updateVoteReplyOnLocalStorage(parentContainer, currentVote + 1);
   }
 }
 
@@ -163,9 +162,9 @@ function downVote(element) {
   }
 
   if (parentContainer.querySelector("[comment-data-user-score]")) {
-    console.log("comment");
+    updateVoteCommentOnLocalStorage(parentContainer, currentVote - 1);
   } else {
-    console.log("reply");
+    updateVoteReplyOnLocalStorage(parentContainer, currentVote - 1);
   }
 }
 
