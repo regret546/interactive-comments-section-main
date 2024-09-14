@@ -3,7 +3,6 @@ const savedData = localStorage.getItem("commentsData");
 if (savedData) {
   try {
     data = JSON.parse(savedData);
-    console.log(data);
   } catch (error) {
     console.error("Error parsing JSON:", error);
     // Handle invalid JSON here, perhaps clear localStorage or refetch data
