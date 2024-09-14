@@ -114,5 +114,3 @@ const updateVoteReplyOnLocalStorage = function (parentElement, scoreToAppend) {
     localStorage.setItem("commentsData", JSON.stringify(savedData));
   }
 };
-
-removeLocalStorage();
